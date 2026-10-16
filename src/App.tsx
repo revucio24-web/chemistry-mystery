@@ -14,6 +14,7 @@ import { ProfileModal } from './components/common/ProfileModal';
 import { ElementCardAlbum } from './components/cards/ElementCardAlbum';
 import { ReviewCenter } from './components/review/ReviewCenter';
 import { LearningProgressView } from './components/progress/LearningProgressView';
+import { PeriodicTableModal } from './components/common/PeriodicTableModal';
 
 import { FlaskConical, Atom, Compass, Sparkles, Layers, RotateCcw } from 'lucide-react';
 
@@ -25,6 +26,7 @@ export const App: React.FC = () => {
 
   const [isDifficultyModalOpen, setIsDifficultyModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [isPeriodicTableModalOpen, setIsPeriodicTableModalOpen] = useState(false);
 
   // Synchronisiere Audio- und Motion-Settings beim Laden
   useEffect(() => {
@@ -101,6 +103,7 @@ export const App: React.FC = () => {
         onChangeView={(newView) => setView(newView)}
         onOpenDifficulty={() => setIsDifficultyModalOpen(true)}
         onOpenProfile={() => setIsProfileModalOpen(true)}
+        onOpenPeriodicTable={() => setIsPeriodicTableModalOpen(true)}
         onToggleSound={handleToggleSound}
         onToggleReducedMotion={handleToggleReducedMotion}
         onNavigateHome={() => setView('rooms')}
@@ -154,6 +157,18 @@ export const App: React.FC = () => {
                     <span>{profile.failedPuzzlesToReview.length} Wiederholen</span>
                   </button>
                 )}
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundEngine.playClick();
+                    setIsPeriodicTableModalOpen(true);
+                  }}
+                  className="px-5 py-3 rounded-xl font-medium text-xs sm:text-sm bg-cyan-950/60 hover:bg-cyan-900/60 border border-cyan-800 text-cyan-300 flex items-center gap-2 cursor-pointer transition-all"
+                >
+                  <Atom className="w-4 h-4 text-cyan-400" />
+                  <span>Periodensystem (PSE)</span>
+                </button>
 
                 <button
                   type="button"
@@ -256,6 +271,12 @@ export const App: React.FC = () => {
         profile={profile}
         onUpdateProfile={handleUpdateProfile}
         onClose={() => setIsProfileModalOpen(false)}
+      />
+
+      {/* Globales Periodensystem Modal */}
+      <PeriodicTableModal
+        isOpen={isPeriodicTableModalOpen}
+        onClose={() => setIsPeriodicTableModalOpen(false)}
       />
     </div>
   );

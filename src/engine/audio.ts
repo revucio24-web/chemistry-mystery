@@ -57,6 +57,33 @@ class LabSoundEngine {
     }
   }
 
+  // Mechanischer Tasten-Klick für Terminal und Codeschloss
+  public playLockKey() {
+    if (this.isMuted) return;
+    try {
+      this.initContext();
+      if (!this.ctx) return;
+
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(1200, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(600, this.ctx.currentTime + 0.03);
+
+      gain.gain.setValueAtTime(this.masterVolume * 0.12, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.03);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.03);
+    } catch {
+      // Audio-Fallback
+    }
+  }
+
   // Erfolgsmelodie bei richtiger Antwort
   public playSuccess() {
     if (this.isMuted) return;
@@ -153,7 +180,104 @@ class LabSoundEngine {
     }
   }
 
-  // Große Labor-Freischaltung
+  // Gas-Zischen bei chemischen Reaktionen (z.B. CO2-Aufbrausen oder Knallgas)
+  public playReactionHiss() {
+    if (this.isMuted) return;
+    try {
+      this.initContext();
+      if (!this.ctx) return;
+
+      const bufferSize = this.ctx.sampleRate * 0.2;
+      const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(2500, this.ctx.currentTime);
+      filter.Q.setValueAtTime(3.0, this.ctx.currentTime);
+
+      const gain = this.ctx.createGain();
+      gain.gain.setValueAtTime(this.masterVolume * 0.1, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.2);
+
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      noise.start();
+    } catch {
+      // Audio-Fallback
+    }
+  }
+
+  // Atom-Orbit-Schwingung beim Laden von Elektronenschalen
+  public playAtomOrbit() {
+    if (this.isMuted) return;
+    try {
+      this.initContext();
+      if (!this.ctx) return;
+
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(300, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(900, this.ctx.currentTime + 0.15);
+
+      gain.gain.setValueAtTime(this.masterVolume * 0.08, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.15);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.15);
+    } catch {
+      // Audio-Fallback
+    }
+  }
+
+  // Harfen-Arpeggio bei Freischaltung seltener Elementkarten
+  public playCardReveal() {
+    if (this.isMuted) return;
+    try {
+      this.initContext();
+      if (!this.ctx) return;
+
+      const now = this.ctx.currentTime;
+      const notes = [440, 554.37, 659.25, 880, 1108.73, 1318.5]; // A-Dur Pentatonik Glissando
+
+      notes.forEach((freq, idx) => {
+        const osc = this.ctx!.createOscillator();
+        const gain = this.ctx!.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.05);
+
+        const startTime = now + idx * 0.05;
+        const endTime = startTime + 0.3;
+
+        gain.gain.setValueAtTime(this.masterVolume * 0.15, startTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, endTime);
+
+        osc.connect(gain);
+        gain.connect(this.ctx!.destination);
+
+        osc.start(startTime);
+        osc.stop(endTime);
+      });
+    } catch {
+      // Audio-Fallback
+    }
+  }
+
+  // Große Labor-Freischaltung (Level-Up)
   public playLevelUp() {
     if (this.isMuted) return;
     try {

@@ -94,3 +94,58 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #0ea5e9;
 }
+
+/* Atom Visualizer Orbital Animations */
+@keyframes orbit-clockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbit-counter {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes nucleus-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.95; }
+  50% { transform: scale(1.04); opacity: 1; }
+}
+
+.animate-orbit-1 {
+  animation: orbit-clockwise 14s linear infinite;
+  transform-origin: 200px 200px;
+}
+
+.animate-orbit-2 {
+  animation: orbit-counter 20s linear infinite;
+  transform-origin: 200px 200px;
+}
+
+.animate-orbit-3 {
+  animation: orbit-clockwise 28s linear infinite;
+  transform-origin: 200px 200px;
+}
+
+.animate-orbit-4 {
+  animation: orbit-counter 36s linear infinite;
+  transform-origin: 200px 200px;
+}
+
+.animate-orbit-5 {
+  animation: orbit-clockwise 45s linear infinite;
+  transform-origin: 200px 200px;
+}
+
+.animate-orbit-6 {
+  animation: orbit-counter 55s linear infinite;
+  transform-origin: 200px 200px;
+}
+
+.animate-orbit-7 {
+  animation: orbit-clockwise 68s linear infinite;
+  transform-origin: 200px 200px;
+}
+
+.animate-pulse-slow {
+  animation: nucleus-pulse 3s ease-in-out infinite;
+}

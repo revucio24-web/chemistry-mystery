@@ -14,8 +14,9 @@ import { PeriodicTableQuiz } from './PeriodicTableQuiz';
 import { MysteryDetective } from './MysteryDetective';
 import { TrueFalseLab } from './TrueFalseLab';
 import { FeedbackModal } from '../common/FeedbackModal';
+import { PeriodicTableModal } from '../common/PeriodicTableModal';
 
-import { ArrowLeft, Lightbulb, Sparkles, BookOpen } from 'lucide-react';
+import { ArrowLeft, Lightbulb, Sparkles, BookOpen, Atom } from 'lucide-react';
 
 interface PuzzleRunnerProps {
   puzzle: Puzzle;
@@ -35,6 +36,7 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
   const [feedback, setFeedback] = useState<ValidationFeedback | null>(null);
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [showHintBanner, setShowHintBanner] = useState(false);
+  const [isPseModalOpen, setIsPseModalOpen] = useState(false);
   const [newBadges, setNewBadges] = useState<Badge[]>([]);
   const [newCards, setNewCards] = useState<ElementCard[]>([]);
 
@@ -130,18 +132,33 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
             </span>
           </div>
 
-          <button
-            type="button"
-            onClick={() => {
-              soundEngine.playClick();
-              setShowHintBanner(prev => !prev);
-            }}
-            className="text-xs text-amber-400 hover:text-amber-300 px-3 py-1.5 rounded-lg bg-amber-950/30 border border-amber-800/40 flex items-center gap-1.5 shrink-0 cursor-pointer"
-            title="Labor-Hinweis aufrufen"
-          >
-            <Lightbulb className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Tipp</span>
-          </button>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={() => {
+                soundEngine.playClick();
+                setIsPseModalOpen(true);
+              }}
+              className="text-xs text-cyan-400 hover:text-cyan-300 px-3 py-1.5 rounded-lg bg-cyan-950/40 border border-cyan-800/60 flex items-center gap-1.5 cursor-pointer"
+              title="Periodensystem der Elemente (PSE) aufschlagen"
+            >
+              <Atom className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">PSE</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                soundEngine.playClick();
+                setShowHintBanner(prev => !prev);
+              }}
+              className="text-xs text-amber-400 hover:text-amber-300 px-3 py-1.5 rounded-lg bg-amber-950/30 border border-amber-800/40 flex items-center gap-1.5 shrink-0 cursor-pointer"
+              title="Labor-Hinweis aufrufen"
+            >
+              <Lightbulb className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Tipp</span>
+            </button>
+          </div>
         </div>
 
         {/* Ausklappbarer Hinweis */}
@@ -171,6 +188,12 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
         onNext={onNextPuzzle}
         onRetry={handleRetry}
         onClose={() => setShowFeedbackModal(false)}
+      />
+
+      {/* Globales Periodensystem Nachschlagewerk */}
+      <PeriodicTableModal
+        isOpen={isPseModalOpen}
+        onClose={() => setIsPseModalOpen(false)}
       />
     </div>
   );

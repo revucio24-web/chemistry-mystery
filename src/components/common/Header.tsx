@@ -13,7 +13,8 @@ import {
   Layers,
   RotateCcw,
   BookOpen,
-  LayoutGrid
+  LayoutGrid,
+  Atom
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -22,6 +23,7 @@ interface HeaderProps {
   onChangeView: (view: 'rooms' | 'cards' | 'review' | 'progress') => void;
   onOpenDifficulty: () => void;
   onOpenProfile: () => void;
+  onOpenPeriodicTable: () => void;
   onToggleSound: () => void;
   onToggleReducedMotion: () => void;
   onNavigateHome: () => void;
@@ -33,6 +35,7 @@ export const Header: React.FC<HeaderProps> = ({
   onChangeView,
   onOpenDifficulty,
   onOpenProfile,
+  onOpenPeriodicTable,
   onToggleSound,
   onToggleReducedMotion,
   onNavigateHome
@@ -127,6 +130,16 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <BookOpen className="w-3.5 h-3.5" />
             <span>Lernmodule</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={onOpenPeriodicTable}
+            className="px-3 py-1.5 rounded-xl font-medium transition-all flex items-center gap-1.5 cursor-pointer text-cyan-400 hover:text-cyan-300 hover:bg-cyan-950/40 border border-transparent hover:border-cyan-800"
+            title="Periodensystem der Elemente (PSE) aufschlagen"
+          >
+            <Atom className="w-3.5 h-3.5" />
+            <span>PSE</span>
           </button>
         </nav>
 
@@ -274,6 +287,15 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <BookOpen className="w-4 h-4" />
           <span className="text-[10px]">Module</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={onOpenPeriodicTable}
+          className="flex flex-col items-center gap-0.5 text-slate-400 hover:text-cyan-400 cursor-pointer"
+        >
+          <Atom className="w-4 h-4 text-cyan-400" />
+          <span className="text-[10px]">PSE</span>
         </button>
       </div>
     </header>

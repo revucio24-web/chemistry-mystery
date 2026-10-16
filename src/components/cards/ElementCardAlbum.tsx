@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ElementCard } from '../../types/game';
-import { ELEMENTS_DATA } from '../../data/elements';
+import { ELEMENTS_DATA, getElementByNumber } from '../../data/elements';
+import { AtomVisualizer } from '../visualizers/AtomVisualizer';
 import { soundEngine } from '../../engine/audio';
 import { 
   Sparkles, 
@@ -220,7 +221,32 @@ export const ElementCardAlbum: React.FC<ElementCardAlbumProps> = ({ collectedCar
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-2 my-4 text-center">
+            {/* Live Bohr-Atom-Visualizer */}
+            {(() => {
+              const fullElement = getElementByNumber(selectedCard.atomicNumber);
+              if (!fullElement) return null;
+              return (
+                <div className="my-3 p-3 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col items-center">
+                  <div className="w-full flex items-center justify-between mb-1 px-1">
+                    <span className="text-[11px] font-mono text-cyan-400 font-bold flex items-center gap-1">
+                      <Atom className="w-3.5 h-3.5" />
+                      <span>Bohrsches Schalenmodell</span>
+                    </span>
+                    <span className="text-[10px] text-slate-500 font-mono">
+                      Z={fullElement.atomicNumber} • {fullElement.protons}p⁺ / {fullElement.neutrons}n⁰
+                    </span>
+                  </div>
+                  <AtomVisualizer
+                    element={fullElement}
+                    size={200}
+                    showControls={false}
+                    interactive={true}
+                  />
+                </div>
+              );
+            })()}
+
+            <div className="grid grid-cols-3 gap-2 my-3 text-center">
               <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
                 <span className="text-[10px] text-slate-400 block">Atommasse</span>
                 <span className="font-mono font-bold text-xs text-cyan-300">{selectedCard.atomicMass} u</span>
