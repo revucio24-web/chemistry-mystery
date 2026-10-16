@@ -1,0 +1,25 @@
+{
+  "name": "Chemistry Mystery – Das Geheimnis der Elemente",
+  "short_name": "Chemistry Mystery",
+  "description": "Das intelligente Chemie Rätselspiel: Entdecke die Geheimnisse der chemischen Elemente in einem futuristischen Wissenschaftslabor.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#050811",
+  "theme_color": "#06b6d4",
+  "orientation": "any",
+  "lang": "de",
+  "categories": [
+    "education",
+    "games",
+    "science"
+  ],
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
