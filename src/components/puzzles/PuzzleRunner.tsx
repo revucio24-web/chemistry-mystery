@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Puzzle, ValidationFeedback } from '../../types/puzzles';
-import { PlayerProfile } from '../../types/game';
+import { PlayerProfile, Badge, ElementCard } from '../../types/game';
 import { evaluatePuzzleResult } from '../../engine/learningEngine';
 import { savePlayerProfile } from '../../engine/storage';
 import { soundEngine } from '../../engine/audio';
@@ -35,6 +35,8 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
   const [feedback, setFeedback] = useState<ValidationFeedback | null>(null);
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [showHintBanner, setShowHintBanner] = useState(false);
+  const [newBadges, setNewBadges] = useState<Badge[]>([]);
+  const [newCards, setNewCards] = useState<ElementCard[]>([]);
 
   const handleValidation = (result: ValidationFeedback) => {
     setFeedback(result);
@@ -43,6 +45,9 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
     const isFirstTry = result.attemptsCount === 1;
     const evaluation = evaluatePuzzleResult(profile, puzzle, result.isCorrect, isFirstTry);
     
+    setNewBadges(evaluation.newBadges);
+    setNewCards(evaluation.newCards);
+
     // Spielstand persistieren
     savePlayerProfile(evaluation.updatedProfile);
     onUpdateProfile(evaluation.updatedProfile);
@@ -161,6 +166,8 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
         isOpen={showFeedbackModal}
         feedback={feedback}
         detailedHint={puzzle.detailedHint}
+        newBadges={newBadges}
+        newCards={newCards}
         onNext={onNextPuzzle}
         onRetry={handleRetry}
         onClose={() => setShowFeedbackModal(false)}

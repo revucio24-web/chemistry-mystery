@@ -9,11 +9,17 @@ import {
   Flame, 
   User, 
   Eye,
-  EyeOff
+  EyeOff,
+  Layers,
+  RotateCcw,
+  BookOpen,
+  LayoutGrid
 } from 'lucide-react';
 
 interface HeaderProps {
   profile: PlayerProfile;
+  currentView: string;
+  onChangeView: (view: 'rooms' | 'cards' | 'review' | 'progress') => void;
   onOpenDifficulty: () => void;
   onOpenProfile: () => void;
   onToggleSound: () => void;
@@ -23,6 +29,8 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({
   profile,
+  currentView,
+  onChangeView,
   onOpenDifficulty,
   onOpenProfile,
   onToggleSound,
@@ -37,7 +45,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Logo & Titel */}
         <div 
           onClick={onNavigateHome}
-          className="flex items-center gap-3 cursor-pointer select-none group"
+          className="flex items-center gap-3 cursor-pointer select-none group shrink-0"
         >
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-cyan-500/30 group-hover:scale-105 transition-all">
             <FlaskConical className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-6 transition-transform" />
@@ -47,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="font-mono font-bold tracking-wider text-sm sm:text-base text-white">
                 CHEMISTRY MYSTERY
               </span>
-              <span className="hidden sm:inline-block text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800">
+              <span className="hidden xl:inline-block text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800">
                 Lernspiel
               </span>
             </div>
@@ -57,8 +65,73 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
+        {/* Zentrale Hauptnavigation (Labor, Karten, Wiederholung, Module) */}
+        <nav className="hidden md:flex items-center gap-1 bg-slate-900/70 p-1.5 rounded-2xl border border-slate-800 text-xs">
+          <button
+            type="button"
+            onClick={() => onChangeView('rooms')}
+            className={`px-3 py-1.5 rounded-xl font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+              currentView === 'rooms' || currentView === 'missions' || currentView === 'puzzle'
+                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
+                : 'text-slate-400 hover:text-white hover:bg-slate-850'
+            }`}
+          >
+            <LayoutGrid className="w-3.5 h-3.5" />
+            <span>Labore</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onChangeView('cards')}
+            className={`px-3 py-1.5 rounded-xl font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+              currentView === 'cards'
+                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
+                : 'text-slate-400 hover:text-white hover:bg-slate-850'
+            }`}
+          >
+            <Layers className="w-3.5 h-3.5" />
+            <span>Karten</span>
+            {profile.elementCards.length > 0 && (
+              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800">
+                {profile.elementCards.length}
+              </span>
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onChangeView('review')}
+            className={`px-3 py-1.5 rounded-xl font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+              currentView === 'review'
+                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
+                : 'text-slate-400 hover:text-white hover:bg-slate-850'
+            }`}
+          >
+            <RotateCcw className="w-3.5 h-3.5 text-amber-400" />
+            <span>Wiederholen</span>
+            {profile.failedPuzzlesToReview.length > 0 && (
+              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-amber-950 text-amber-300 border border-amber-800 animate-pulse">
+                {profile.failedPuzzlesToReview.length}
+              </span>
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onChangeView('progress')}
+            className={`px-3 py-1.5 rounded-xl font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+              currentView === 'progress'
+                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
+                : 'text-slate-400 hover:text-white hover:bg-slate-850'
+            }`}
+          >
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>Lernmodule</span>
+          </button>
+        </nav>
+
         {/* Spielerstatus: Level & XP Bar */}
-        <div className="flex items-center gap-3 sm:gap-6">
+        <div className="flex items-center gap-2 sm:gap-4 shrink-0">
           <div 
             onClick={onOpenProfile}
             className="flex items-center gap-2 sm:gap-3 bg-slate-900/80 hover:bg-slate-850 border border-slate-800 hover:border-slate-700 px-3 py-1.5 rounded-xl cursor-pointer transition-all"
@@ -66,7 +139,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="w-8 h-8 rounded-lg bg-cyan-950 border border-cyan-800 flex items-center justify-center font-mono font-bold text-xs text-cyan-300">
               Lv.{profile.level}
             </div>
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 gap-4">
                 <span>{profile.currentXP} XP</span>
                 <span>noch {profile.xpToNextLevel} XP</span>
@@ -84,7 +157,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Streak Zähler */}
           {profile.stats.currentStreak > 0 && (
-            <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-950/40 border border-amber-800/40 text-amber-300 text-xs font-mono font-bold">
+            <div className="hidden 2xl:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-950/40 border border-amber-800/40 text-amber-300 text-xs font-mono font-bold">
               <Flame className="w-4 h-4 text-orange-400 animate-pulse" />
               <span>{profile.stats.currentStreak}er Serie</span>
             </div>
@@ -147,6 +220,61 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Mobile Navigationsleiste (unten fixiert auf Smartphones) */}
+      <div className="md:hidden flex items-center justify-around border-t border-slate-900 bg-slate-950/95 py-2 px-3 text-xs">
+        <button
+          type="button"
+          onClick={() => onChangeView('rooms')}
+          className={`flex flex-col items-center gap-0.5 ${
+            currentView === 'rooms' || currentView === 'missions' || currentView === 'puzzle'
+              ? 'text-cyan-400 font-bold'
+              : 'text-slate-400'
+          }`}
+        >
+          <LayoutGrid className="w-4 h-4" />
+          <span className="text-[10px]">Labore</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => onChangeView('cards')}
+          className={`flex flex-col items-center gap-0.5 relative ${
+            currentView === 'cards' ? 'text-cyan-400 font-bold' : 'text-slate-400'
+          }`}
+        >
+          <Layers className="w-4 h-4" />
+          <span className="text-[10px]">Karten</span>
+          {profile.elementCards.length > 0 && (
+            <span className="absolute -top-1 right-1 w-2 h-2 rounded-full bg-cyan-400" />
+          )}
+        </button>
+
+        <button
+          type="button"
+          onClick={() => onChangeView('review')}
+          className={`flex flex-col items-center gap-0.5 relative ${
+            currentView === 'review' ? 'text-amber-400 font-bold' : 'text-slate-400'
+          }`}
+        >
+          <RotateCcw className="w-4 h-4 text-amber-400" />
+          <span className="text-[10px]">Wiederholen</span>
+          {profile.failedPuzzlesToReview.length > 0 && (
+            <span className="absolute -top-1 right-2 w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+          )}
+        </button>
+
+        <button
+          type="button"
+          onClick={() => onChangeView('progress')}
+          className={`flex flex-col items-center gap-0.5 ${
+            currentView === 'progress' ? 'text-cyan-400 font-bold' : 'text-slate-400'
+          }`}
+        >
+          <BookOpen className="w-4 h-4" />
+          <span className="text-[10px]">Module</span>
+        </button>
       </div>
     </header>
   );

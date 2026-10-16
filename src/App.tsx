@@ -11,12 +11,15 @@ import { MissionList } from './components/lab/MissionList';
 import { PuzzleRunner } from './components/puzzles/PuzzleRunner';
 import { DifficultyModal } from './components/common/DifficultyModal';
 import { ProfileModal } from './components/common/ProfileModal';
+import { ElementCardAlbum } from './components/cards/ElementCardAlbum';
+import { ReviewCenter } from './components/review/ReviewCenter';
+import { LearningProgressView } from './components/progress/LearningProgressView';
 
-import { FlaskConical, Atom, Compass, Sparkles } from 'lucide-react';
+import { FlaskConical, Atom, Compass, Sparkles, Layers, RotateCcw } from 'lucide-react';
 
 export const App: React.FC = () => {
   const [profile, setProfile] = useState<PlayerProfile>(() => loadPlayerProfile());
-  const [view, setView] = useState<'rooms' | 'missions' | 'puzzle'>('rooms');
+  const [view, setView] = useState<'rooms' | 'missions' | 'puzzle' | 'cards' | 'review' | 'progress'>('rooms');
   const [activeRoomId, setActiveRoomId] = useState<string>('elemental_lab');
   const [activePuzzleId, setActivePuzzleId] = useState<string | null>(null);
 
@@ -73,7 +76,6 @@ export const App: React.FC = () => {
   };
 
   const handleNextPuzzle = () => {
-    // Finde das nächste ungelöste Rätsel
     const currentIdx = ELEMENTAL_LAB_PUZZLES.findIndex(p => p.id === activePuzzleId);
     if (currentIdx !== -1 && currentIdx < ELEMENTAL_LAB_PUZZLES.length - 1) {
       setActivePuzzleId(ELEMENTAL_LAB_PUZZLES[currentIdx + 1].id);
@@ -93,6 +95,8 @@ export const App: React.FC = () => {
       {/* Header */}
       <Header
         profile={profile}
+        currentView={view}
+        onChangeView={(newView) => setView(newView)}
         onOpenDifficulty={() => setIsDifficultyModalOpen(true)}
         onOpenProfile={() => setIsProfileModalOpen(true)}
         onToggleSound={handleToggleSound}
@@ -131,11 +135,31 @@ export const App: React.FC = () => {
 
                 <button
                   type="button"
+                  onClick={() => setView('cards')}
+                  className="px-5 py-3 rounded-xl font-medium text-xs sm:text-sm bg-slate-900/90 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white flex items-center gap-2 cursor-pointer transition-all"
+                >
+                  <Layers className="w-4 h-4 text-cyan-400" />
+                  <span>Karten-Album ({profile.elementCards.length})</span>
+                </button>
+
+                {profile.failedPuzzlesToReview.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setView('review')}
+                    className="px-5 py-3 rounded-xl font-medium text-xs sm:text-sm bg-amber-950/50 hover:bg-amber-900/60 border border-amber-800 text-amber-300 flex items-center gap-2 cursor-pointer transition-all"
+                  >
+                    <RotateCcw className="w-4 h-4 text-amber-400 animate-spin-slow" />
+                    <span>{profile.failedPuzzlesToReview.length} Wiederholen</span>
+                  </button>
+                )}
+
+                <button
+                  type="button"
                   onClick={() => setIsDifficultyModalOpen(true)}
                   className="px-5 py-3 rounded-xl font-medium text-xs sm:text-sm bg-slate-900/90 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white flex items-center gap-2 cursor-pointer transition-all"
                 >
                   <Compass className="w-4 h-4 text-cyan-400" />
-                  <span>Schwierigkeit wählen</span>
+                  <span>Schwierigkeit</span>
                 </button>
               </div>
             </div>
@@ -171,6 +195,27 @@ export const App: React.FC = () => {
             onUpdateProfile={handleUpdateProfile}
             onBackToMissions={() => setView('missions')}
             onNextPuzzle={handleNextPuzzle}
+          />
+        )}
+
+        {view === 'cards' && (
+          <ElementCardAlbum
+            collectedCards={profile.elementCards}
+            onClose={() => setView('rooms')}
+          />
+        )}
+
+        {view === 'review' && (
+          <ReviewCenter
+            profile={profile}
+            onSelectPuzzle={handleSelectPuzzle}
+            onBackToMissions={() => setView('missions')}
+          />
+        )}
+
+        {view === 'progress' && (
+          <LearningProgressView
+            profile={profile}
           />
         )}
       </main>

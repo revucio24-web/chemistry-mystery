@@ -8,6 +8,8 @@ export const ELEMENTAL_LAB_PUZZLES: Puzzle[] = [
     id: 'el_puzzle_01',
     title: 'Die Glyphen der Alchemie',
     room: 'elemental_lab',
+    moduleId: 'module_a',
+    rewardElementAtomicNumber: 1, // Wasserstoff
     type: 'element_match',
     difficulty: 'explorer',
     missionNumber: 1,
@@ -32,6 +34,8 @@ export const ELEMENTAL_LAB_PUZZLES: Puzzle[] = [
     id: 'el_puzzle_02',
     title: 'Der Elementar-Wahrheitsfilter',
     room: 'elemental_lab',
+    moduleId: 'module_a',
+    rewardElementAtomicNumber: 6, // Kohlenstoff
     type: 'true_false',
     difficulty: 'explorer',
     missionNumber: 2,
@@ -52,6 +56,8 @@ export const ELEMENTAL_LAB_PUZZLES: Puzzle[] = [
     id: 'el_puzzle_03',
     title: 'Das flüchtige Edelgas',
     room: 'elemental_lab',
+    moduleId: 'module_a',
+    rewardElementAtomicNumber: 2, // Helium
     type: 'periodic_table_quiz',
     difficulty: 'beginner',
     missionNumber: 3,
@@ -78,6 +84,8 @@ export const ELEMENTAL_LAB_PUZZLES: Puzzle[] = [
     id: 'el_puzzle_04',
     title: 'Molekül-Synthese: Das Lebenselixier',
     room: 'elemental_lab',
+    moduleId: 'module_b',
+    rewardElementAtomicNumber: 8, // Sauerstoff
     type: 'molecule_builder',
     difficulty: 'explorer',
     missionNumber: 4,
@@ -102,6 +110,8 @@ export const ELEMENTAL_LAB_PUZZLES: Puzzle[] = [
     id: 'el_puzzle_05',
     title: 'Der Code des Chemikers',
     room: 'elemental_lab',
+    moduleId: 'module_b',
+    rewardElementAtomicNumber: 3, // Lithium
     type: 'lab_door_cipher',
     difficulty: 'beginner',
     missionNumber: 5,
@@ -130,6 +140,8 @@ export const ELEMENTAL_LAB_PUZZLES: Puzzle[] = [
     id: 'el_puzzle_06',
     title: 'Analyseprobe X-21: Das weiße Pulver',
     room: 'elemental_lab',
+    moduleId: 'module_f',
+    rewardElementAtomicNumber: 11, // Natrium
     type: 'substance_analysis',
     difficulty: 'beginner',
     missionNumber: 6,
@@ -193,6 +205,8 @@ export const ELEMENTAL_LAB_PUZZLES: Puzzle[] = [
     id: 'el_puzzle_07',
     title: 'Die Gleichung der Knallgasreaktion',
     room: 'elemental_lab',
+    moduleId: 'module_c',
+    rewardElementAtomicNumber: 17, // Chlor
     type: 'equation_balancer',
     difficulty: 'beginner',
     missionNumber: 7,
@@ -212,6 +226,8 @@ export const ELEMENTAL_LAB_PUZZLES: Puzzle[] = [
     id: 'el_puzzle_08',
     title: 'Fallakte 01: Das angelaufene Silberbesteck',
     room: 'elemental_lab',
+    moduleId: 'module_e',
+    rewardElementAtomicNumber: 79, // Gold
     type: 'mystery_detective',
     difficulty: 'advanced',
     missionNumber: 8,
@@ -266,6 +282,8 @@ export const ELEMENTAL_LAB_PUZZLES: Puzzle[] = [
     id: 'el_puzzle_09',
     title: 'Physikalisch oder Chemisch?',
     room: 'elemental_lab',
+    moduleId: 'module_f',
+    rewardElementAtomicNumber: 12, // Magnesium
     type: 'true_false',
     difficulty: 'beginner',
     missionNumber: 9,
@@ -286,10 +304,12 @@ export const ELEMENTAL_LAB_PUZZLES: Puzzle[] = [
     id: 'el_puzzle_10',
     title: 'Die Trennlinie der Elemente',
     room: 'elemental_lab',
+    moduleId: 'module_a',
+    rewardElementAtomicNumber: 26, // Eisen
     type: 'periodic_table_quiz',
     difficulty: 'beginner',
     missionNumber: 10,
-    question: 'Welches dieser Elemente ist ein reaktives Nichtmetall und lebensnotwendig für den menschlichen Sauerstofftransport im roten Blutfarbstoff?',
+    question: 'Welches dieser Elemente ist ein reaktives Übergangsmetall und lebensnotwendig für den menschlichen Sauerstofftransport im roten Blutfarbstoff?',
     loreContext: 'Zum Abschluss der Elementarlabor-Prüfung testet das System dein Verständnis über Spurenelemente und Metalle.',
     hint: 'Achtung: Im Hämoglobin bindet ein Übergangsmetall den Sauerstoff. Symbol: Fe (Ferrum).',
     detailedHint: 'Suche in Periode 4, Gruppe 8. Ordnungszahl 26.',

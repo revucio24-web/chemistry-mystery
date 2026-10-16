@@ -35,10 +35,14 @@ export type PuzzleType =
   | 'mystery_detective'      // Typ 7: Chemie-Detektiv
   | 'true_false';            // Typ 8: Wahr oder Falsch?
 
+import { LearningModuleId } from './modules';
+
 export interface BasePuzzle {
   id: string;
   title: string;
   room: string;
+  moduleId?: LearningModuleId;
+  rewardElementAtomicNumber?: number;
   type: PuzzleType;
   difficulty: DifficultyLevel;
   missionNumber: number;

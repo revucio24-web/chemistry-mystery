@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
-import { CheckCircle2, AlertCircle, Sparkles, BookOpen, Lightbulb, ArrowRight, RotateCcw } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Sparkles, BookOpen, Lightbulb, ArrowRight, RotateCcw, Award, Layers } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { ValidationFeedback } from '../../types/puzzles';
+import { Badge, ElementCard } from '../../types/game';
 
 interface FeedbackModalProps {
   isOpen: boolean;
   feedback: ValidationFeedback | null;
   detailedHint?: string;
+  newBadges?: Badge[];
+  newCards?: ElementCard[];
   onNext?: () => void;
   onRetry: () => void;
   onClose: () => void;
@@ -16,6 +19,8 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
   isOpen,
   feedback,
   detailedHint,
+  newBadges = [],
+  newCards = [],
   onNext,
   onRetry,
   onClose
@@ -49,7 +54,7 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
         }`}
       >
         {/* Header-Icon & Titel */}
-        <div className="flex items-center gap-4 mb-5">
+        <div className="flex items-center gap-4 mb-4">
           <div 
             className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${
               feedback.isCorrect 
@@ -82,8 +87,56 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
           </div>
         </div>
 
+        {/* Freigeschaltete Belohnungen (Badges & Elementkarten) */}
+        {feedback.isCorrect && (newBadges.length > 0 || newCards.length > 0) && (
+          <div className="mb-4 space-y-2">
+            {newCards.map(card => (
+              <div 
+                key={card.atomicNumber}
+                className="p-3 rounded-xl bg-cyan-950/50 border border-cyan-500/50 flex items-center gap-3 animate-in zoom-in-95"
+              >
+                <div 
+                  className="w-10 h-10 rounded-xl flex items-center justify-center font-mono font-bold text-lg text-white shrink-0 shadow"
+                  style={{ backgroundColor: card.colorHex || '#06b6d4' }}
+                >
+                  {card.symbol}
+                </div>
+                <div>
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-cyan-300 font-bold flex items-center gap-1">
+                    <Layers className="w-3.5 h-3.5" />
+                    <span>Neue Elementkarte freigeschaltet!</span>
+                  </div>
+                  <div className="text-xs font-bold text-white">
+                    {card.name} (#{card.atomicNumber}) • {card.category}
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {newBadges.map(badge => (
+              <div 
+                key={badge.id}
+                className="p-3 rounded-xl bg-amber-950/50 border border-amber-500/50 flex items-center gap-3 animate-in zoom-in-95"
+              >
+                <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center shrink-0">
+                  <Award className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold flex items-center gap-1">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Neues Abzeichen verdient!</span>
+                  </div>
+                  <div className="text-xs font-bold text-white">
+                    {badge.title} – {badge.description}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* Hauptnachricht */}
-        <div className={`p-4 rounded-xl mb-5 text-sm sm:text-base border ${
+        <div className={`p-4 rounded-xl mb-4 text-sm sm:text-base border ${
           feedback.isCorrect 
             ? 'bg-emerald-950/40 border-emerald-800/40 text-emerald-200' 
             : 'bg-amber-950/40 border-amber-800/40 text-amber-200'
@@ -92,7 +145,7 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
         </div>
 
         {/* Didaktischer Wissensblock (Warum ist das so?) */}
-        <div className="space-y-3 mb-6 max-h-60 overflow-y-auto pr-1">
+        <div className="space-y-3 mb-5 max-h-52 overflow-y-auto pr-1">
           <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
             <div className="flex items-center gap-2 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-1.5">
               <BookOpen className="w-4 h-4" />

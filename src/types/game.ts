@@ -13,9 +13,17 @@ export interface ElementCard {
   atomicNumber: number;
   symbol: string;
   name: string;
+  latinName?: string;
+  atomicMass: number;
+  period: number;
+  group: number;
   category: string;
   rarity: 'common' | 'rare' | 'epic' | 'legendary';
   discoveredAt: string;
+  funFact: string;
+  realWorldUse: string;
+  electronShells?: number[];
+  colorHex?: string;
 }
 
 export interface PlayerStats {
