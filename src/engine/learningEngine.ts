@@ -95,24 +95,45 @@ export const AVAILABLE_BADGES: Badge[] = [
 ];
 
 export function calculateLevel(totalXP: number): { level: number; currentXP: number; xpToNextLevel: number; progressPercent: number } {
+  const safeXP = Math.max(0, totalXP);
   let level = 1;
+
   for (let i = LEVEL_THRESHOLDS.length - 1; i >= 0; i--) {
-    if (totalXP >= LEVEL_THRESHOLDS[i]) {
+    if (safeXP >= LEVEL_THRESHOLDS[i]) {
       level = i + 1;
       break;
     }
   }
 
+  // Für XP oberhalb des vordefinierten Arrays: endlos skalierendes Levelsystem (500 XP pro Level)
+  const maxFixedLevel = LEVEL_THRESHOLDS.length;
+  const maxFixedXP = LEVEL_THRESHOLDS[maxFixedLevel - 1];
+  if (safeXP >= maxFixedXP) {
+    const extraXP = safeXP - maxFixedXP;
+    const extraLevels = Math.floor(extraXP / 500);
+    level = maxFixedLevel + extraLevels;
+    const currentBase = maxFixedXP + extraLevels * 500;
+    const nextBase = currentBase + 500;
+    const needed = nextBase - safeXP;
+    const progressPercent = Math.min(100, Math.round(((safeXP - currentBase) / 500) * 100));
+    return {
+      level,
+      currentXP: safeXP,
+      xpToNextLevel: Math.max(1, needed),
+      progressPercent
+    };
+  }
+
   const currentLevelBase = LEVEL_THRESHOLDS[level - 1] || 0;
   const nextLevelThreshold = LEVEL_THRESHOLDS[level] || currentLevelBase + 500;
-  const levelXP = totalXP - currentLevelBase;
+  const levelXP = safeXP - currentLevelBase;
   const neededXP = nextLevelThreshold - currentLevelBase;
   const progressPercent = Math.min(100, Math.round((levelXP / neededXP) * 100));
 
   return {
     level,
-    currentXP: totalXP,
-    xpToNextLevel: Math.max(0, nextLevelThreshold - totalXP),
+    currentXP: safeXP,
+    xpToNextLevel: Math.max(0, nextLevelThreshold - safeXP),
     progressPercent
   };
 }
