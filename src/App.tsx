@@ -15,6 +15,7 @@ import { ElementCardAlbum } from './components/cards/ElementCardAlbum';
 import { ReviewCenter } from './components/review/ReviewCenter';
 import { LearningProgressView } from './components/progress/LearningProgressView';
 import { PeriodicTableModal } from './components/common/PeriodicTableModal';
+import { KidsEncyclopediaModal } from './components/common/KidsEncyclopediaModal';
 
 import { FlaskConical, Atom, Compass, Sparkles, Layers, RotateCcw } from 'lucide-react';
 
@@ -27,6 +28,7 @@ export const App: React.FC = () => {
   const [isDifficultyModalOpen, setIsDifficultyModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isPeriodicTableModalOpen, setIsPeriodicTableModalOpen] = useState(false);
+  const [isEncyclopediaOpen, setIsEncyclopediaOpen] = useState(false);
 
   // Synchronisiere Audio- und Motion-Settings beim Laden
   useEffect(() => {
@@ -104,6 +106,7 @@ export const App: React.FC = () => {
         onOpenDifficulty={() => setIsDifficultyModalOpen(true)}
         onOpenProfile={() => setIsProfileModalOpen(true)}
         onOpenPeriodicTable={() => setIsPeriodicTableModalOpen(true)}
+        onOpenEncyclopedia={() => setIsEncyclopediaOpen(true)}
         onToggleSound={handleToggleSound}
         onToggleReducedMotion={handleToggleReducedMotion}
         onNavigateHome={() => setView('rooms')}
@@ -168,6 +171,18 @@ export const App: React.FC = () => {
                 >
                   <Atom className="w-4 h-4 text-cyan-400" />
                   <span>Periodensystem (PSE)</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundEngine.playClick();
+                    setIsEncyclopediaOpen(true);
+                  }}
+                  className="px-5 py-3 rounded-xl font-medium text-xs sm:text-sm bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-800 text-emerald-300 flex items-center gap-2 cursor-pointer transition-all"
+                >
+                  <span className="text-base">🐱</span>
+                  <span>Sparkys Forscherlexikon</span>
                 </button>
 
                 <button
@@ -277,6 +292,12 @@ export const App: React.FC = () => {
       <PeriodicTableModal
         isOpen={isPeriodicTableModalOpen}
         onClose={() => setIsPeriodicTableModalOpen(false)}
+      />
+
+      {/* Sparkys Kinder-Forscherlexikon */}
+      <KidsEncyclopediaModal
+        isOpen={isEncyclopediaOpen}
+        onClose={() => setIsEncyclopediaOpen(false)}
       />
     </div>
   );

@@ -87,6 +87,29 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
           </div>
         </div>
 
+        {/* 🐱 Chemikus Sparkys Kinderfreundlicher Zuspruch */}
+        <div className={`p-3.5 rounded-2xl mb-4 border flex items-start gap-3 animate-in fade-in ${
+          feedback.isCorrect
+            ? 'bg-emerald-950/60 border-emerald-500/40 text-emerald-200'
+            : 'bg-amber-950/60 border-amber-500/40 text-amber-200'
+        }`}>
+          <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-2xl shrink-0 shadow">
+            🐱
+          </div>
+          <div>
+            <div className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 opacity-90 mb-0.5">
+              <span>Chemikus Sparkys Forscher-Funk</span>
+              <span>•</span>
+              <span className="text-[10px] font-mono">Für junge Entdecker</span>
+            </div>
+            <p className="text-xs sm:text-sm font-semibold leading-relaxed">
+              {feedback.isCorrect
+                ? '"Miau-tastisch kombiniert! Du hast die Naturgesetze der Chemie voll durchschaut!"'
+                : '"Kopf hoch, kleiner Forscher! Auch die größten Nobelpreisträger haben hunderte Male experimentiert. Schau dir den Tipp an und probiere es gleich noch einmal!"'}
+            </p>
+          </div>
+        </div>
+
         {/* Freigeschaltete Belohnungen (Badges & Elementkarten) */}
         {feedback.isCorrect && (newBadges.length > 0 || newCards.length > 0) && (
           <div className="mb-4 space-y-2">

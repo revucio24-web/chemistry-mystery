@@ -255,4 +255,33 @@ describe('Interactive App Full-Stack & UI E2E Tests (React 19 & Happy-DOM)', () 
       expect(saved.activeDifficulty).toBe('advanced');
     }
   });
+
+  it('8. öffnet und durchstöbert Sparkys kinderfreundliches Forscherlexikon', async () => {
+    await act(async () => {
+      root.render(<App />);
+    });
+
+    const lexikonBtn = Array.from(container.querySelectorAll('button')).find(
+      b => b.textContent?.includes('Forscherlexikon') || b.textContent?.includes('Lexikon')
+    );
+    expect(lexikonBtn).toBeDefined();
+
+    await act(async () => {
+      lexikonBtn?.click();
+    });
+
+    expect(container.textContent).toContain('Sparkys Forscherlexikon');
+    expect(container.textContent).toContain('Was ist ein Atom?');
+
+    // Schließen
+    const closeBtn = Array.from(container.querySelectorAll('button')).find(
+      b => b.getAttribute('aria-label') === 'Schließen' || b.textContent?.includes('Alles verstanden')
+    );
+    if (closeBtn) {
+      await act(async () => {
+        closeBtn.click();
+      });
+      expect(container.textContent).not.toContain('Was ist ein Atom?');
+    }
+  });
 });

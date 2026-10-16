@@ -3,6 +3,7 @@ import { ChemicalElement, ElementCategory } from '../../types/chemistry';
 import { ELEMENTS_DATA, getElementByNumber } from '../../data/elements';
 import { AtomVisualizer } from '../visualizers/AtomVisualizer';
 import { soundEngine } from '../../engine/audio';
+import { getElementSuperpower } from '../../data/elementSuperpowers';
 import { 
   X, 
   Search, 
@@ -379,6 +380,19 @@ export const PeriodicTableModal: React.FC<PeriodicTableModalProps> = ({
 
               {/* Didaktische Infoboxen */}
               <div className="space-y-2.5 text-xs">
+                {/* 🐱 Sparkys Element-Superkraft */}
+                <div className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-100 flex items-start gap-2.5">
+                  <span className="text-xl shrink-0">🐱</span>
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-300 block mb-0.5">
+                      Sparkys Entdecker-Superkraft:
+                    </span>
+                    <p className="text-xs font-semibold leading-relaxed">
+                      {getElementSuperpower(selectedElement.symbol)}
+                    </p>
+                  </div>
+                </div>
+
                 <p className="text-slate-300 leading-relaxed p-3 rounded-xl bg-slate-900/50 border border-slate-800">
                   {selectedElement.description}
                 </p>

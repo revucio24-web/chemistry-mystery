@@ -8,6 +8,7 @@ import { ElementCardAlbum } from '../components/cards/ElementCardAlbum';
 import { ReviewCenter } from '../components/review/ReviewCenter';
 import { LearningProgressView } from '../components/progress/LearningProgressView';
 import { PeriodicTableModal } from '../components/common/PeriodicTableModal';
+import { KidsEncyclopediaModal } from '../components/common/KidsEncyclopediaModal';
 import { AtomVisualizer } from '../components/visualizers/AtomVisualizer';
 import { INITIAL_PLAYER_PROFILE } from '../types/game';
 import { LAB_ROOMS } from '../types/lab';
@@ -83,6 +84,14 @@ describe('All Views Render Test', () => {
       <PeriodicTableModal isOpen={true} onClose={() => {}} />
     );
     expect(html).toContain('Periodensystem');
+  });
+
+  it('renders KidsEncyclopediaModal without errors', () => {
+    const html = renderToString(
+      <KidsEncyclopediaModal isOpen={true} onClose={() => {}} />
+    );
+    expect(html).toContain('Sparkys Forscherlexikon');
+    expect(html).toContain('Was ist ein Atom?');
   });
 
   it('renders AtomVisualizer for all elements without errors', () => {

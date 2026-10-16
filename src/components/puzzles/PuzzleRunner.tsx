@@ -15,6 +15,8 @@ import { MysteryDetective } from './MysteryDetective';
 import { TrueFalseLab } from './TrueFalseLab';
 import { FeedbackModal } from '../common/FeedbackModal';
 import { PeriodicTableModal } from '../common/PeriodicTableModal';
+import { KidsEncyclopediaModal } from '../common/KidsEncyclopediaModal';
+import { getSparkyTip } from '../../engine/kidExplanations';
 
 import { ArrowLeft, Lightbulb, Sparkles, BookOpen, Atom } from 'lucide-react';
 
@@ -37,8 +39,11 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [showHintBanner, setShowHintBanner] = useState(false);
   const [isPseModalOpen, setIsPseModalOpen] = useState(false);
+  const [isEncyclopediaOpen, setIsEncyclopediaOpen] = useState(false);
   const [newBadges, setNewBadges] = useState<Badge[]>([]);
   const [newCards, setNewCards] = useState<ElementCard[]>([]);
+
+  const sparkyTip = getSparkyTip(puzzle);
 
   const handleValidation = (result: ValidationFeedback) => {
     setFeedback(result);
@@ -137,6 +142,19 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
               type="button"
               onClick={() => {
                 soundEngine.playClick();
+                setIsEncyclopediaOpen(true);
+              }}
+              className="text-xs text-emerald-400 hover:text-emerald-300 px-3 py-1.5 rounded-lg bg-emerald-950/40 border border-emerald-800/60 flex items-center gap-1.5 cursor-pointer"
+              title="Sparkys Forscherlexikon öffnen"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Lexikon</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                soundEngine.playClick();
                 setIsPseModalOpen(true);
               }}
               className="text-xs text-cyan-400 hover:text-cyan-300 px-3 py-1.5 rounded-lg bg-cyan-950/40 border border-cyan-800/60 flex items-center gap-1.5 cursor-pointer"
@@ -161,7 +179,27 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
           </div>
         </div>
 
-        {/* Ausklappbarer Hinweis */}
+        {/* 🐱 Sparkys kinderleichte Erklärung & Merkhilfe */}
+        <div className="mt-4 p-4 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-cyan-950/40 border border-emerald-500/30 shadow-sm flex flex-col sm:flex-row items-start gap-3.5">
+          <div className="w-10 h-10 rounded-xl bg-slate-900 border border-emerald-500/40 flex items-center justify-center text-2xl shrink-0 shadow">
+            🐱
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-xs font-bold text-emerald-300 uppercase tracking-wider">{sparkyTip.title}</span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800">Kinderleicht</span>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
+              {sparkyTip.simpleExplanation}
+            </p>
+            <div className="mt-2 text-xs text-amber-200/90 flex items-start gap-1.5 bg-amber-950/30 p-2 rounded-xl border border-amber-800/40">
+              <span className="shrink-0 font-semibold text-amber-300">🧩 Merkhilfe:</span>
+              <span>{sparkyTip.kidAnalogy}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Ausklappbarer wissenschaftlicher Hinweis */}
         {showHintBanner && (
           <div className="mt-3 p-3.5 rounded-xl bg-amber-950/30 border border-amber-800/40 text-amber-200 text-xs sm:text-sm leading-relaxed animate-in fade-in flex items-start gap-2.5">
             <Lightbulb className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
@@ -194,6 +232,12 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
       <PeriodicTableModal
         isOpen={isPseModalOpen}
         onClose={() => setIsPseModalOpen(false)}
+      />
+
+      {/* Sparkys Kinder-Forscherlexikon */}
+      <KidsEncyclopediaModal
+        isOpen={isEncyclopediaOpen}
+        onClose={() => setIsEncyclopediaOpen(false)}
       />
     </div>
   );

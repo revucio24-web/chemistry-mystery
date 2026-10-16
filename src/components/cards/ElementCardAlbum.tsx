@@ -3,6 +3,7 @@ import { ElementCard } from '../../types/game';
 import { ELEMENTS_DATA, getElementByNumber } from '../../data/elements';
 import { AtomVisualizer } from '../visualizers/AtomVisualizer';
 import { soundEngine } from '../../engine/audio';
+import { getElementSuperpower } from '../../data/elementSuperpowers';
 import { 
   Sparkles, 
   Layers, 
@@ -262,6 +263,19 @@ export const ElementCardAlbum: React.FC<ElementCardAlbumProps> = ({ collectedCar
             </div>
 
             <div className="space-y-3 text-xs sm:text-sm">
+              {/* 🐱 Sparkys Element-Superkraft */}
+              <div className="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-100 flex items-start gap-2.5">
+                <span className="text-xl shrink-0">🐱</span>
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-300 block mb-0.5">
+                    Sparkys Element-Superkraft:
+                  </span>
+                  <p className="text-xs font-semibold leading-relaxed">
+                    {getElementSuperpower(selectedCard.symbol)}
+                  </p>
+                </div>
+              </div>
+
               <div className="p-3.5 rounded-xl bg-cyan-950/30 border border-cyan-800/40 text-cyan-200">
                 <span className="font-semibold block mb-0.5 text-cyan-300">Wissenschaftlicher Fun Fact:</span>
                 {selectedCard.funFact}

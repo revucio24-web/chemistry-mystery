@@ -24,6 +24,7 @@ interface HeaderProps {
   onOpenDifficulty: () => void;
   onOpenProfile: () => void;
   onOpenPeriodicTable: () => void;
+  onOpenEncyclopedia?: () => void;
   onToggleSound: () => void;
   onToggleReducedMotion: () => void;
   onNavigateHome: () => void;
@@ -36,6 +37,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenDifficulty,
   onOpenProfile,
   onOpenPeriodicTable,
+  onOpenEncyclopedia,
   onToggleSound,
   onToggleReducedMotion,
   onNavigateHome
@@ -141,6 +143,18 @@ export const Header: React.FC<HeaderProps> = ({
             <Atom className="w-3.5 h-3.5" />
             <span>PSE</span>
           </button>
+
+          {onOpenEncyclopedia && (
+            <button
+              type="button"
+              onClick={onOpenEncyclopedia}
+              className="px-3 py-1.5 rounded-xl font-medium transition-all flex items-center gap-1.5 cursor-pointer text-emerald-400 hover:text-emerald-300 hover:bg-emerald-950/40 border border-transparent hover:border-emerald-800"
+              title="Sparkys Forscherlexikon öffnen"
+            >
+              <span className="text-sm">🐱</span>
+              <span>Lexikon</span>
+            </button>
+          )}
         </nav>
 
         {/* Spielerstatus: Level & XP Bar */}
