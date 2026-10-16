@@ -1,0 +1,172 @@
+import React, { useEffect } from 'react';
+import { CheckCircle2, AlertCircle, Sparkles, BookOpen, Lightbulb, ArrowRight, RotateCcw } from 'lucide-react';
+import confetti from 'canvas-confetti';
+import { ValidationFeedback } from '../../types/puzzles';
+
+interface FeedbackModalProps {
+  isOpen: boolean;
+  feedback: ValidationFeedback | null;
+  detailedHint?: string;
+  onNext?: () => void;
+  onRetry: () => void;
+  onClose: () => void;
+}
+
+export const FeedbackModal: React.FC<FeedbackModalProps> = ({
+  isOpen,
+  feedback,
+  detailedHint,
+  onNext,
+  onRetry,
+  onClose
+}) => {
+  const [showDetailedHint, setShowDetailedHint] = React.useState(false);
+
+  useEffect(() => {
+    if (isOpen && feedback?.isCorrect) {
+      try {
+        confetti({
+          particleCount: 80,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      } catch {
+        // Fallback
+      }
+    }
+    setShowDetailedHint(false);
+  }, [isOpen, feedback]);
+
+  if (!isOpen || !feedback) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+      <div 
+        className={`w-full max-w-xl rounded-2xl p-6 sm:p-8 lab-card border-2 shadow-2xl ${
+          feedback.isCorrect 
+            ? 'border-emerald-500/50 shadow-emerald-500/10' 
+            : 'border-amber-500/50 shadow-amber-500/10'
+        }`}
+      >
+        {/* Header-Icon & Titel */}
+        <div className="flex items-center gap-4 mb-5">
+          <div 
+            className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${
+              feedback.isCorrect 
+                ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
+                : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+            }`}
+          >
+            {feedback.isCorrect ? (
+              <CheckCircle2 className="w-8 h-8" />
+            ) : (
+              <AlertCircle className="w-8 h-8" />
+            )}
+          </div>
+          <div>
+            <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+              {feedback.isCorrect ? (
+                <>
+                  <span className="text-emerald-400 glow-emerald">Laborerfolg!</span>
+                  <Sparkles className="w-5 h-5 text-emerald-400" />
+                </>
+              ) : (
+                <span className="text-amber-400 glow-amber">Guter Versuch – Noch nicht ganz!</span>
+              )}
+            </h3>
+            <p className="text-sm text-slate-400 mt-0.5">
+              {feedback.isCorrect 
+                ? 'Wissenschaftliche Hypothese glänzend bestätigt.' 
+                : 'In der Wissenschaft bringt uns jeder Fehlversuch der Wahrheit näher.'}
+            </p>
+          </div>
+        </div>
+
+        {/* Hauptnachricht */}
+        <div className={`p-4 rounded-xl mb-5 text-sm sm:text-base border ${
+          feedback.isCorrect 
+            ? 'bg-emerald-950/40 border-emerald-800/40 text-emerald-200' 
+            : 'bg-amber-950/40 border-amber-800/40 text-amber-200'
+        }`}>
+          {feedback.message}
+        </div>
+
+        {/* Didaktischer Wissensblock (Warum ist das so?) */}
+        <div className="space-y-3 mb-6 max-h-60 overflow-y-auto pr-1">
+          <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+            <div className="flex items-center gap-2 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-1.5">
+              <BookOpen className="w-4 h-4" />
+              <span>Das chemische Prinzip dahinter</span>
+            </div>
+            <p className="text-sm text-slate-300 leading-relaxed">
+              {feedback.scientificExplanation}
+            </p>
+          </div>
+
+          {/* Alltagsbeispiel */}
+          {feedback.realWorldExample && (
+            <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
+              <div className="flex items-center gap-2 text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-1">
+                <Lightbulb className="w-4 h-4" />
+                <span>Chemie im Alltag</span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-300">
+                {feedback.realWorldExample}
+              </p>
+            </div>
+          )}
+
+          {/* Detaillierter Schritt-für-Schritt-Tipp (bei Falsch) */}
+          {!feedback.isCorrect && detailedHint && (
+            <div className="pt-1">
+              {!showDetailedHint ? (
+                <button
+                  type="button"
+                  onClick={() => setShowDetailedHint(true)}
+                  className="text-xs text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5 underline decoration-cyan-500/40 cursor-pointer"
+                >
+                  <Lightbulb className="w-3.5 h-3.5" />
+                  <span>Schritt-für-Schritt-Erklärung anzeigen</span>
+                </button>
+              ) : (
+                <div className="p-3.5 rounded-xl bg-cyan-950/30 border border-cyan-800/50 text-cyan-200 text-xs sm:text-sm leading-relaxed animate-in fade-in">
+                  <span className="font-semibold block mb-1 text-cyan-300">💡 Wissenschaftlicher Leitfaden:</span>
+                  {detailedHint}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Aktionsleiste */}
+        <div className="flex flex-col-reverse sm:flex-row items-center justify-end gap-3 pt-2 border-t border-slate-800">
+          {!feedback.isCorrect ? (
+            <button
+              type="button"
+              onClick={() => {
+                onRetry();
+                onClose();
+              }}
+              className="w-full sm:w-auto px-6 py-2.5 rounded-xl font-medium text-sm bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-amber-900/30 transition-all"
+            >
+              <RotateCcw className="w-4 h-4" />
+              <span>Erneut versuchen</span>
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => {
+                onClose();
+                if (onNext) onNext();
+              }}
+              className="w-full sm:w-auto px-6 py-2.5 rounded-xl font-medium text-sm bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-900/30 transition-all"
+            >
+              <span>Nächste Mission</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
