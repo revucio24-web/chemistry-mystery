@@ -1,6 +1,6 @@
 import React from 'react';
 import { PlayerProfile } from '../../types/game';
-import { ELEMENTAL_LAB_PUZZLES } from '../../data/puzzles';
+import { ALL_PUZZLES } from '../../data/puzzles';
 import { calculateModulesProgress } from '../../engine/learningEngine';
 import { 
   BookOpen, 
@@ -21,7 +21,7 @@ interface LearningProgressViewProps {
 }
 
 export const LearningProgressView: React.FC<LearningProgressViewProps> = ({ profile }) => {
-  const moduleProgress = calculateModulesProgress(profile, ELEMENTAL_LAB_PUZZLES);
+  const moduleProgress = calculateModulesProgress(profile, ALL_PUZZLES);
 
   const getModuleIcon = (iconName: string) => {
     switch (iconName) {

@@ -58,5 +58,43 @@ export const REACTIONS_DATA: ChemicalReaction[] = [
     explanation: 'N₂ liefert 2 Stickstoffatome, deshalb entstehen rechts 2 NH₃. 2 NH₃ enthalten zusammen 6 Wasserstoffatome (2 × 3 = 6). Links benötigt man daher 3 Moleküle H₂ (3 × 2 = 6).',
     didacticTip: 'Suche das kleinste gemeinsame Vielfache von 2 und 3 für den Wasserstoff!',
     realWorldContext: 'Ermöglichte die Massenproduktion von mineralischem Dünger und ernährt heute fast die Hälfte der Menschheit.'
+  },
+  {
+    id: 'rx_salt_synthesis',
+    title: 'Synthese von Natriumchlorid (Kochsalz)',
+    description: 'Das reaktive Metall Natrium reagiert mit dem giftigen Chlorgas zu harmlosem Speisesalz. Balanciere die Atome aus!',
+    reactants: [
+      { coefficient: 1, formula: 'Na', name: 'Natrium', state: 's' },
+      { coefficient: 1, formula: 'Cl₂', name: 'Chlorgas', state: 'g' }
+    ],
+    products: [
+      { coefficient: 1, formula: 'NaCl', name: 'Natriumchlorid', state: 's' }
+    ],
+    correctCoefficients: {
+      reactants: [2, 1],
+      products: [2]
+    },
+    explanation: '1 Cl₂ bringt 2 Chloratome mit, daher müssen rechts 2 NaCl entstehen. Um die 2 Natriumatome bereitzustellen, benötigt man links 2 Na.',
+    didacticTip: 'Ein Halogenmolekül (Cl₂) besteht immer aus zwei Atomen. Das Produkt benötigt daher den Koeffizienten 2!',
+    realWorldContext: 'Ein eindrucksvoller Beweis: Zwei aggressive, gefährliche Reinstoffe verwandeln sich durch chemische Bindung in ein lebenswichtiges Speisesalz.'
+  },
+  {
+    id: 'rx_water_electrolysis',
+    title: 'Wasser-Elektrolyse (Grüner Wasserstoff)',
+    description: 'Mittels elektrischem Strom wird flüssiges Wasser in reinen Wasserstoff und Sauerstoff gespalten.',
+    reactants: [
+      { coefficient: 1, formula: 'H₂O', name: 'Wasser', state: 'l' }
+    ],
+    products: [
+      { coefficient: 1, formula: 'H₂', name: 'Wasserstoff', state: 'g' },
+      { coefficient: 1, formula: 'O₂', name: 'Sauerstoff', state: 'g' }
+    ],
+    correctCoefficients: {
+      reactants: [2],
+      products: [2, 1]
+    },
+    explanation: '2 H₂O enthalten 4 Wasserstoffatome und 2 Sauerstoffatome. Rechts entstehen 2 H₂ (4 H-Atome) und 1 O₂ (2 O-Atome). Die Masse bleibt exakt erhalten.',
+    didacticTip: 'Achte auf den Sauerstoff: O₂ verlangt links 2 H₂O!',
+    realWorldContext: 'Schlüsseltechnologie der Energiewende: Mit Wind- und Solarstrom wird so emissionsfreier grüner Wasserstoff als Energiespeicher produziert.'
   }
 ];

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PlayerProfile } from './types/game';
 import { LAB_ROOMS } from './types/lab';
-import { ELEMENTAL_LAB_PUZZLES } from './data/puzzles';
+import { ALL_PUZZLES, getPuzzlesForRoom } from './data/puzzles';
 import { loadPlayerProfile, savePlayerProfile } from './engine/storage';
 import { soundEngine } from './engine/audio';
 
@@ -75,17 +75,19 @@ export const App: React.FC = () => {
     setView('puzzle');
   };
 
+  const currentRoomPuzzles = getPuzzlesForRoom(activeRoomId);
+
   const handleNextPuzzle = () => {
-    const currentIdx = ELEMENTAL_LAB_PUZZLES.findIndex(p => p.id === activePuzzleId);
-    if (currentIdx !== -1 && currentIdx < ELEMENTAL_LAB_PUZZLES.length - 1) {
-      setActivePuzzleId(ELEMENTAL_LAB_PUZZLES[currentIdx + 1].id);
+    const currentIdx = currentRoomPuzzles.findIndex(p => p.id === activePuzzleId);
+    if (currentIdx !== -1 && currentIdx < currentRoomPuzzles.length - 1) {
+      setActivePuzzleId(currentRoomPuzzles[currentIdx + 1].id);
     } else {
       setView('missions');
     }
   };
 
   const currentRoom = LAB_ROOMS.find(r => r.id === activeRoomId) || LAB_ROOMS[0];
-  const currentPuzzle = ELEMENTAL_LAB_PUZZLES.find(p => p.id === activePuzzleId) || ELEMENTAL_LAB_PUZZLES[0];
+  const currentPuzzle = ALL_PUZZLES.find(p => p.id === activePuzzleId) || currentRoomPuzzles[0] || ALL_PUZZLES[0];
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col relative selection:bg-cyan-500/30 selection:text-cyan-200">
@@ -181,7 +183,7 @@ export const App: React.FC = () => {
         {view === 'missions' && (
           <MissionList
             room={currentRoom}
-            puzzles={ELEMENTAL_LAB_PUZZLES}
+            puzzles={currentRoomPuzzles}
             profile={profile}
             onSelectPuzzle={handleSelectPuzzle}
             onBackToOverview={() => setView('rooms')}

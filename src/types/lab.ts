@@ -46,7 +46,7 @@ export const LAB_ROOMS: LabRoom[] = [
     accentColor: '#6366f1',
     iconName: 'Orbit',
     learningFocus: 'Modul B: Atome, Ionen & Ladungen',
-    missionsCount: 8,
+    missionsCount: 4,
     status: 'locked'
   },
   {
@@ -59,7 +59,7 @@ export const LAB_ROOMS: LabRoom[] = [
     accentColor: '#10b981',
     iconName: 'Share2',
     learningFocus: 'Modul B & E: Moleküle, Verbindungen & Formeln',
-    missionsCount: 8,
+    missionsCount: 4,
     status: 'locked'
   },
   {
@@ -72,7 +72,7 @@ export const LAB_ROOMS: LabRoom[] = [
     accentColor: '#f59e0b',
     iconName: 'Flame',
     learningFocus: 'Modul C: Chemische Reaktionen & Gleichungen ausgleichen',
-    missionsCount: 8,
+    missionsCount: 4,
     status: 'locked'
   },
   {
@@ -85,7 +85,7 @@ export const LAB_ROOMS: LabRoom[] = [
     accentColor: '#8b5cf6',
     iconName: 'Gem',
     learningFocus: 'Modul F: Zustände, Kristallgitter & Stoffeigenschaften',
-    missionsCount: 8,
+    missionsCount: 4,
     status: 'locked'
   },
   {
@@ -98,7 +98,7 @@ export const LAB_ROOMS: LabRoom[] = [
     accentColor: '#0ea5e9',
     iconName: 'Droplets',
     learningFocus: 'Modul D & E: Säuren, Basen, pH-Wert & Wasser',
-    missionsCount: 8,
+    missionsCount: 4,
     status: 'locked'
   },
   {
@@ -111,7 +111,7 @@ export const LAB_ROOMS: LabRoom[] = [
     accentColor: '#84cc16',
     iconName: 'Leaf',
     learningFocus: 'Modul G: Zukunftschemie, Akkus & Umweltschutz',
-    missionsCount: 8,
+    missionsCount: 4,
     status: 'locked'
   },
   {
@@ -124,7 +124,7 @@ export const LAB_ROOMS: LabRoom[] = [
     accentColor: '#d946ef',
     iconName: 'Sparkles',
     learningFocus: 'Finale Meisterprüfung: Synthese aller Module',
-    missionsCount: 5,
+    missionsCount: 2,
     status: 'locked'
   }
 ];
