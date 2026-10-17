@@ -50,17 +50,31 @@ export const EquationBalancer: React.FC<EquationBalancerProps> = ({ puzzle, onVa
 
   const balanceCheck = verifyEquationMassBalance(currentReactants, currentProducts);
 
+  const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
+  const allCoeffs = [...reactantCoeffs, ...productCoeffs];
+  const coeffGcd = allCoeffs.reduce((acc, c) => gcd(acc, c), 0) || 1;
+  const isSmallestForm = coeffGcd === 1;
+
   const handleCheckEquation = () => {
     const newAttempts = attempts + 1;
     setAttempts(newAttempts);
 
-    if (balanceCheck.isBalanced) {
+    if (balanceCheck.isBalanced && isSmallestForm) {
       soundEngine.playSuccess();
       onValidate({
         isCorrect: true,
         message: 'Reaktionsgleichung meisterhaft ausgeglichen! Gesetz der Massenerhaltung erfüllt.',
         scientificExplanation: puzzle.didacticExplanation,
         realWorldExample: puzzle.realWorldExample,
+        attemptsCount: newAttempts
+      });
+    } else if (balanceCheck.isBalanced && !isSmallestForm) {
+      soundEngine.playHintNotice();
+      onValidate({
+        isCorrect: false,
+        message: `Die Atombilanz stimmt, aber die Koeffizienten sind nicht in der kleinsten Form (gemeinsamer Teiler ${coeffGcd}). Kürze alle Koeffizienten!`,
+        scientificExplanation: 'Reaktionsgleichungen werden immer mit der kleinsten ganzzahligen Koeffizientenkombination angegeben.',
+        hint: 'Alle Koeffizienten lassen sich noch durch dieselbe Zahl teilen.',
         attemptsCount: newAttempts
       });
     } else {

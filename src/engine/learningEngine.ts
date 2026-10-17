@@ -2,6 +2,7 @@ import { PlayerProfile, Badge, ElementCard } from '../types/game';
 import { Puzzle } from '../types/puzzles';
 import { getElementByNumber } from '../data/elements';
 import { LEARNING_MODULES, LearningModule } from '../types/modules';
+import { evaluateAvailableTitles, calculatePuzzleStars } from './rewardEngine';
 
 export const LEVEL_THRESHOLDS = [
   0,     // Level 1 (Elementarlabor)
@@ -168,10 +169,22 @@ export function evaluatePuzzleResult(
   profile: PlayerProfile,
   puzzle: Puzzle,
   isCorrect: boolean,
-  firstTry: boolean
-): { updatedProfile: PlayerProfile; newBadges: Badge[]; newCards: ElementCard[]; xpEarned: number; leveledUp: boolean } {
+  firstTry: boolean,
+  attemptsCount: number = 1,
+  hintsUsed: number = 0
+): { updatedProfile: PlayerProfile; newBadges: Badge[]; newCards: ElementCard[]; xpEarned: number; leveledUp: boolean; crystalsEarned: number; newTitles: string[]; starsEarned: number } {
   const newProfile: PlayerProfile = {
     ...profile,
+    puzzleStars: { ...(profile.puzzleStars || {}) },
+    dailyQuests: Array.isArray(profile.dailyQuests) ? [...profile.dailyQuests] : [],
+    rewards: {
+      ...profile.rewards,
+      crystals: profile.rewards?.crystals || 0,
+      unlockedTitles: [...(profile.rewards?.unlockedTitles || ['Junior-Entdecker'])],
+      activeTitle: profile.rewards?.activeTitle || 'Junior-Entdecker',
+      dailyRewardStreak: profile.rewards?.dailyRewardStreak || 0,
+      lastDailyRewardClaimedDate: profile.rewards?.lastDailyRewardClaimedDate
+    },
     stats: { ...profile.stats, solvedByType: { ...profile.stats.solvedByType } },
     unlockedRooms: [...profile.unlockedRooms],
     completedPuzzleIds: [...profile.completedPuzzleIds],
@@ -181,21 +194,52 @@ export function evaluatePuzzleResult(
   };
 
   let xpEarned = 0;
+  let crystalsEarned = 0;
+  let starsEarned = 0;
   const newBadges: Badge[] = [];
   const newCards: ElementCard[] = [];
   const prevLevel = profile.level;
 
   if (isCorrect) {
+    starsEarned = calculatePuzzleStars(attemptsCount, hintsUsed);
+    newProfile.puzzleStars[puzzle.id] = Math.max(newProfile.puzzleStars[puzzle.id] || 0, starsEarned);
+
+    // Tagesquests aktualisieren
+    if (newProfile.dailyQuests.length > 0) {
+      newProfile.dailyQuests = newProfile.dailyQuests.map(q => {
+        if (q.id.includes('quest_lab_')) {
+          const nextCount = Math.min(q.targetCount, q.currentCount + 1);
+          return { ...q, currentCount: nextCount, isCompleted: nextCount >= q.targetCount };
+        }
+        if (q.id.includes('quest_streak_')) {
+          const nextStreak = (newProfile.stats.currentStreak || 0) + 1;
+          const isDone = nextStreak >= q.targetCount;
+          return { ...q, currentCount: Math.min(q.targetCount, nextStreak), isCompleted: isDone };
+        }
+        if (q.id.includes('quest_pse_') && puzzle.type === 'periodic_table_quiz') {
+          const nextCount = Math.min(q.targetCount, q.currentCount + 1);
+          return { ...q, currentCount: nextCount, isCompleted: nextCount >= q.targetCount };
+        }
+        return q;
+      });
+    }
     // Grund-XP aus dem Rätsel
     xpEarned = puzzle.xpReward;
     if (firstTry) {
       xpEarned += 10; // Bonus für sofortiges Verstehen
     }
 
+    // Kristalle berechnen
+    const isFirstSolve = !profile.completedPuzzleIds.includes(puzzle.id);
+    crystalsEarned = 5;
+    if (isFirstSolve) crystalsEarned += 10;
+    if (firstTry) crystalsEarned += 5;
+
     // War das Rätsel in der Spaced-Repetition-Wiederholung?
     const wasInReview = profile.failedPuzzlesToReview.includes(puzzle.id);
     if (wasInReview) {
       xpEarned += 15; // Wiederholungs-Meisterbonus!
+      crystalsEarned += 5;
       // Badge: Wissens-Wiederbelebung
       const b = AVAILABLE_BADGES.find(x => x.id === 'badge_review_master');
       if (b && !newProfile.badges.some(x => x.id === b.id)) {
@@ -380,11 +424,26 @@ export function evaluatePuzzleResult(
     }
   }
 
+  // Bonus-Kristalle bei Stufenaufstieg
+  if (leveledUp) {
+    crystalsEarned += 25;
+  }
+  newProfile.rewards.crystals = (newProfile.rewards.crystals || 0) + crystalsEarned;
+
+  // Prüfen auf neu freigeschaltete Titel
+  const newTitles = evaluateAvailableTitles(newProfile);
+  if (newTitles.length > 0) {
+    newProfile.rewards.unlockedTitles.push(...newTitles);
+  }
+
   return {
     updatedProfile: newProfile,
     newBadges,
     newCards,
     xpEarned,
-    leveledUp
+    leveledUp,
+    crystalsEarned,
+    newTitles,
+    starsEarned
   };
 }

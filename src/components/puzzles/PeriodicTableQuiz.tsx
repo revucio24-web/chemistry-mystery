@@ -3,6 +3,7 @@ import { PeriodicTableQuizPuzzle, ValidationFeedback } from '../../types/puzzles
 import { ELEMENTS_DATA } from '../../data/elements';
 import { ChemicalElement } from '../../types/chemistry';
 import { soundEngine } from '../../engine/audio';
+import { CATEGORY_DEFINITIONS } from '../common/PeriodicTableModal';
 import { Search, Check, Sparkles } from 'lucide-react';
 
 interface PeriodicTableQuizProps {
@@ -73,7 +74,7 @@ export const PeriodicTableQuiz: React.FC<PeriodicTableQuizProps> = ({ puzzle, on
       {/* Suche & Filter */}
       <div className="flex items-center justify-between gap-3">
         <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-          Wähle das Element im Periodensystem
+          Wähle das Element im Periodensystem ({ELEMENTS_DATA.length} Elemente verfügbar)
         </h4>
 
         <div className="relative w-48 sm:w-64">
@@ -82,7 +83,7 @@ export const PeriodicTableQuiz: React.FC<PeriodicTableQuizProps> = ({ puzzle, on
             type="text"
             value={searchFilter}
             onChange={(e) => setSearchFilter(e.target.value)}
-            placeholder="Name oder Symbol..."
+            placeholder="Name, Symbol, Ordnungszahl..."
             className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
           />
         </div>
@@ -92,23 +93,24 @@ export const PeriodicTableQuiz: React.FC<PeriodicTableQuizProps> = ({ puzzle, on
       <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 gap-2.5 max-h-72 overflow-y-auto pr-1">
         {filteredElements.map(el => {
           const isSelected = selectedElement?.atomicNumber === el.atomicNumber;
+          const cat = CATEGORY_DEFINITIONS[el.category] || { label: el.category, color: 'text-slate-300', border: 'border-slate-700', bgSoft: 'bg-slate-900' };
 
           return (
             <button
               key={el.atomicNumber}
               type="button"
               onClick={() => handleSelect(el)}
-              className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer flex flex-col items-center justify-between min-h-[90px] relative ${
+              className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer flex flex-col items-center justify-between min-h-[92px] relative element-cell-hover ${
                 isSelected
-                  ? 'bg-cyan-500/25 border-cyan-400 text-white ring-2 ring-cyan-500/30 shadow-lg shadow-cyan-500/20'
-                  : 'bg-slate-900/70 border-slate-800 hover:border-slate-700 text-slate-300 hover:bg-slate-850'
+                  ? 'bg-cyan-500/25 border-cyan-400 text-white ring-2 ring-cyan-500/40 shadow-lg shadow-cyan-500/25 scale-[1.02]'
+                  : `${cat.bgSoft} ${cat.border} hover:border-slate-500 text-slate-300`
               }`}
             >
               <div className="w-full flex items-center justify-between text-[10px] text-slate-400 font-mono">
-                <span>{el.atomicNumber}</span>
-                <span>Gr.{el.group}</span>
+                <span className="font-bold text-slate-300">{el.atomicNumber}</span>
+                <span className="text-[9px] opacity-75">G{el.group}</span>
               </div>
-              <div className="text-xl font-bold font-mono text-cyan-300 my-0.5">
+              <div className={`text-xl font-black font-mono my-0.5 ${isSelected ? 'text-cyan-300' : cat.color}`}>
                 {el.symbol}
               </div>
               <div className="text-[11px] font-medium text-slate-200 truncate w-full">
@@ -121,9 +123,9 @@ export const PeriodicTableQuiz: React.FC<PeriodicTableQuizProps> = ({ puzzle, on
 
       {/* Detailanzeige des ausgewählten Elements */}
       {selectedElement && (
-        <div className="p-4 rounded-xl lab-card border border-cyan-500/30 flex items-center justify-between gap-4 animate-in fade-in">
-          <div>
-            <div className="flex items-center gap-2">
+        <div className="p-4 rounded-xl lab-card border border-cyan-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 animate-in fade-in">
+          <div className="flex-1">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="font-mono text-xs font-bold text-cyan-400 bg-cyan-950 px-2 py-0.5 rounded border border-cyan-800">
                 #{selectedElement.atomicNumber}
               </span>
@@ -131,10 +133,16 @@ export const PeriodicTableQuiz: React.FC<PeriodicTableQuizProps> = ({ puzzle, on
                 {selectedElement.name} ({selectedElement.symbol})
               </span>
               <span className="text-xs text-slate-400 font-mono">
-                Masse: {selectedElement.atomicMass} u
+                {selectedElement.atomicMass} u
+              </span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                Gruppe {selectedElement.group} · Periode {selectedElement.period}
+              </span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-950/60 text-cyan-300 border border-cyan-800/50">
+                {CATEGORY_DEFINITIONS[selectedElement.category]?.label}
               </span>
             </div>
-            <p className="text-xs text-slate-400 mt-1 max-w-xl">
+            <p className="text-xs text-slate-400 mt-1.5 max-w-2xl leading-relaxed">
               {selectedElement.description}
             </p>
           </div>
@@ -142,7 +150,7 @@ export const PeriodicTableQuiz: React.FC<PeriodicTableQuizProps> = ({ puzzle, on
           <button
             type="button"
             onClick={handleSubmit}
-            className="px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/25 shrink-0 flex items-center gap-1.5 cursor-pointer"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/25 shrink-0 flex items-center justify-center gap-2 cursor-pointer transition-transform active:scale-95"
           >
             <span>Auswahl einloggen</span>
             <Check className="w-4 h-4" />

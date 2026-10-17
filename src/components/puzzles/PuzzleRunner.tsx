@@ -42,6 +42,7 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
   const [isEncyclopediaOpen, setIsEncyclopediaOpen] = useState(false);
   const [newBadges, setNewBadges] = useState<Badge[]>([]);
   const [newCards, setNewCards] = useState<ElementCard[]>([]);
+  const [earnedStars, setEarnedStars] = useState<number>(3);
 
   const sparkyTip = getSparkyTip(puzzle);
 
@@ -50,8 +51,17 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
     setShowFeedbackModal(true);
 
     const isFirstTry = result.attemptsCount === 1;
-    const evaluation = evaluatePuzzleResult(profile, puzzle, result.isCorrect, isFirstTry);
+    const hintsUsed = showHintBanner ? 1 : 0;
+    const evaluation = evaluatePuzzleResult(
+      profile,
+      puzzle,
+      result.isCorrect,
+      isFirstTry,
+      result.attemptsCount || 1,
+      hintsUsed
+    );
     
+    setEarnedStars(evaluation.starsEarned || 1);
     setNewBadges(evaluation.newBadges);
     setNewCards(evaluation.newCards);
 
@@ -59,8 +69,22 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
     savePlayerProfile(evaluation.updatedProfile);
     onUpdateProfile(evaluation.updatedProfile);
 
+    if (result.isCorrect) {
+      if (evaluation.updatedProfile.stats.currentStreak > 1) {
+        soundEngine.playCombo(evaluation.updatedProfile.stats.currentStreak);
+      } else {
+        soundEngine.playSuccess();
+      }
+      soundEngine.playStarEarned((evaluation.starsEarned || 3) as 1 | 2 | 3);
+      soundEngine.triggerHaptic('success');
+    } else {
+      soundEngine.triggerHaptic('medium');
+    }
+
     if (evaluation.leveledUp) {
-      soundEngine.playLevelUp();
+      setTimeout(() => {
+        soundEngine.playLevelUp();
+      }, 400);
     }
   };
 
@@ -223,6 +247,7 @@ export const PuzzleRunner: React.FC<PuzzleRunnerProps> = ({
         detailedHint={puzzle.detailedHint}
         newBadges={newBadges}
         newCards={newCards}
+        earnedStars={earnedStars}
         onNext={onNextPuzzle}
         onRetry={handleRetry}
         onClose={() => setShowFeedbackModal(false)}

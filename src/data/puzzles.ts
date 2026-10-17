@@ -710,7 +710,7 @@ export const ALL_PUZZLES: Puzzle[] = [
     missionNumber: 4,
     question: 'Entlarve die Fälschung anhand der Dichte und Stoffeigenschaften!',
     caseTitle: 'Der verdächtige Klumpen im Kristallgewölbe',
-    caseReport: 'Ein Besucher behauptet, einen riesigen 1-Kilogramm-Goldnugget gefunden zu haben. Die optische Farbe glänzt golden, doch das Volumen weckt Zweifel.',
+    caseReport: 'Ein Besucher behauptet, einen 500-Gramm-Goldnugget gefunden zu haben. Die optische Farbe glänzt golden, doch das Volumen weckt Zweifel.',
     loreContext: 'Archimedes lässt grüßen: Die Dichte entlarvt das Geheimnis.',
     hint: 'Echtes Gold hat eine gigantische Dichte von ca. 19,3 g/cm³. Katzengold (Pyrit, FeS₂) wiegt bei gleichem Volumen nur rund ein Viertel (ca. 5,0 g/cm³).',
     detailedHint: 'Ein Goldklumpen von 100 cm³ müsste fast 2 Kilogramm wiegen.',

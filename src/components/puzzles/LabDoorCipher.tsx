@@ -110,7 +110,7 @@ export const LabDoorCipher: React.FC<LabDoorCipherProps> = ({ puzzle, onValidate
             {/* Terminal Display */}
             <div className="mb-4 p-3 rounded-xl bg-slate-950 border border-cyan-900 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Lock className="w-4 h-4 text-amber-400 animate-pulse" />
+                <Lock className="w-4 h-4 text-amber-400" />
                 <span className="text-xs font-mono text-slate-400 uppercase">Code:</span>
               </div>
               <div className="font-mono text-2xl font-bold tracking-widest text-cyan-300">

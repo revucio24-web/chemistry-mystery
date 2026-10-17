@@ -32,6 +32,13 @@ export interface ChemicalElement {
   funFact: string;
   realWorldUse: string;
   hazardNote?: string;
+  // Wahre wissenschaftliche Daten & Kennzahlen
+  electronConfiguration?: string; // z.B. "[Ar] 3d⁶ 4s²"
+  electronegativity?: number; // Pauling-Skala (z.B. 3.98 für Fluor)
+  meltingPointC?: number; // Schmelzpunkt in °C
+  boilingPointC?: number; // Siedepunkt in °C
+  density?: string; // z.B. "7.87 g/cm³" oder "0.0899 g/L"
+  discoveredYear?: string; // z.B. "1774" oder "Antike"
 }
 
 export interface MoleculeAtom {

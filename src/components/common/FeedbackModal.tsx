@@ -10,6 +10,7 @@ interface FeedbackModalProps {
   detailedHint?: string;
   newBadges?: Badge[];
   newCards?: ElementCard[];
+  earnedStars?: number;
   onNext?: () => void;
   onRetry: () => void;
   onClose: () => void;
@@ -21,6 +22,7 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
   detailedHint,
   newBadges = [],
   newCards = [],
+  earnedStars = 3,
   onNext,
   onRetry,
   onClose
@@ -109,6 +111,37 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
             </p>
           </div>
         </div>
+
+        {/* 🌟 3-Sterne-Wertung */}
+        {feedback.isCorrect && (
+          <div className="mb-4 p-3.5 rounded-2xl bg-amber-950/40 border border-amber-500/40 flex items-center justify-between animate-in zoom-in-95">
+            <div className="flex items-center gap-2">
+              {[1, 2, 3].map(sIdx => {
+                const isEarned = sIdx <= earnedStars;
+                return (
+                  <span
+                    key={sIdx}
+                    className={`text-2xl sm:text-3xl transition-all duration-300 ${
+                      isEarned
+                        ? 'text-amber-400 drop-shadow-[0_0_12px_rgba(251,191,36,0.7)] scale-110'
+                        : 'text-slate-700 opacity-40'
+                    }`}
+                  >
+                    ★
+                  </span>
+                );
+              })}
+            </div>
+            <div className="text-right">
+              <span className="text-xs font-mono font-bold text-amber-300 uppercase tracking-wider block">
+                {earnedStars === 3 ? '★★★ Perfekte Meister-Leistung!' : earnedStars === 2 ? '★★ Sehr gut!' : '★ Erfolgreich gelöst!'}
+              </span>
+              <span className="text-[10px] text-slate-400">
+                {earnedStars === 3 ? 'Beim 1. Versuch ohne Hinweis gemeistert' : 'Aufgabe im Labor abgeschlossen'}
+              </span>
+            </div>
+          </div>
+        )}
 
         {/* Freigeschaltete Belohnungen (Badges & Elementkarten) */}
         {feedback.isCorrect && (newBadges.length > 0 || newCards.length > 0) && (

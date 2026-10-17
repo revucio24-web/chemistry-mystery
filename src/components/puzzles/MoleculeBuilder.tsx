@@ -16,6 +16,12 @@ export const MoleculeBuilder: React.FC<MoleculeBuilderProps> = ({ puzzle, onVali
   const target = puzzle.targetMolecule;
 
   const handleAddAtom = (symbol: string) => {
+    const poolAtom = puzzle.availableAtomPool.find(a => a.symbol === symbol);
+    const current = selectedAtoms[symbol] || 0;
+    if (poolAtom && typeof poolAtom.count === 'number' && poolAtom.count > 0 && current >= poolAtom.count) {
+      soundEngine.playHintNotice();
+      return;
+    }
     soundEngine.playBubble();
     setSelectedAtoms(prev => ({
       ...prev,
@@ -114,7 +120,7 @@ export const MoleculeBuilder: React.FC<MoleculeBuilderProps> = ({ puzzle, onVali
         
         {totalAtomsSelected === 0 ? (
           <div className="text-center text-slate-500 z-10 py-8">
-            <Atom className="w-12 h-12 mx-auto mb-2 opacity-40 text-cyan-400 animate-pulse" />
+            <Atom className="w-12 h-12 mx-auto mb-2 opacity-40 text-cyan-400" />
             <p className="text-sm">Die Reaktionskammer ist leer.</p>
             <p className="text-xs text-slate-600 mt-1">Füge unten Atome aus dem Vorratsbehälter hinzu.</p>
           </div>
@@ -122,10 +128,14 @@ export const MoleculeBuilder: React.FC<MoleculeBuilderProps> = ({ puzzle, onVali
           <div className="z-10 flex flex-wrap items-center justify-center gap-4 p-4">
             {Object.entries(selectedAtoms).map(([symbol, count]) => {
               const atomConfig = puzzle.availableAtomPool.find(a => a.symbol === symbol);
+              const isGas = ['H', 'He', 'N', 'O', 'F', 'Ne', 'Cl', 'Ar', 'Kr', 'Xe', 'Rn'].includes(symbol);
+              const motionClass = isGas ? 'animate-gas-drift' : 'solid-stationary';
+
               return Array.from({ length: count }).map((_, i) => (
                 <div
                   key={`${symbol}-${i}`}
-                  className="flex flex-col items-center animate-in zoom-in-75 duration-200"
+                  className={`flex flex-col items-center animate-in zoom-in-75 duration-200 ${motionClass}`}
+                  style={{ animationDelay: `${(i * 0.35 + (symbol.charCodeAt(0) % 4) * 0.2).toFixed(2)}s` }}
                 >
                   <div
                     className="w-16 h-16 rounded-full flex items-center justify-center font-mono font-bold text-xl text-white shadow-xl relative border-2"
@@ -203,7 +213,8 @@ export const MoleculeBuilder: React.FC<MoleculeBuilderProps> = ({ puzzle, onVali
                   <button
                     type="button"
                     onClick={() => handleAddAtom(atom.symbol)}
-                    className="w-7 h-7 rounded flex items-center justify-center text-cyan-300 hover:bg-cyan-950/50 hover:text-cyan-200 cursor-pointer"
+                    disabled={atom.count > 0 && currentCount >= atom.count}
+                    className="w-7 h-7 rounded flex items-center justify-center text-cyan-300 hover:bg-cyan-950/50 hover:text-cyan-200 disabled:opacity-30 disabled:hover:bg-transparent cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5" />
                   </button>

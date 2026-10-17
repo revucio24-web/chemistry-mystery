@@ -25,3 +25,10 @@ dist-ssr
 *.tsbuildinfo
 backups/
 *.zip
+
+# lokale Build-Hilfsordner
+.npm-cache/
+.tmp/
+
+# Build-Artefakte (Android)
+*.apk

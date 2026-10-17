@@ -32,8 +32,8 @@ describe('Interactive App Full-Stack & UI E2E Tests (React 19 & Happy-DOM)', () 
       root.render(<App />);
     });
 
-    expect(container.textContent).toContain('CHEMISTRY MYSTERY');
-    expect(container.textContent).toContain('Entdecke die Geheimnisse der chemischen Elemente');
+    expect(container.textContent).toContain('ELEMENTAR');
+    expect(container.textContent).toContain('Elementar: Das große Chemie-Abenteuer');
     expect(container.textContent).toContain('Das Elementarlabor');
   });
 

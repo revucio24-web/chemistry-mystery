@@ -1,6 +1,7 @@
 import React from 'react';
 import { PlayerProfile } from '../../types/game';
 import { DIFFICULTY_LABELS } from '../../types/puzzles';
+import { calculateLevel } from '../../engine/learningEngine';
 import { 
   FlaskConical, 
   Volume2, 
@@ -20,11 +21,12 @@ import {
 interface HeaderProps {
   profile: PlayerProfile;
   currentView: string;
-  onChangeView: (view: 'rooms' | 'cards' | 'review' | 'progress') => void;
+  onChangeView: (view: 'rooms' | 'cards' | 'review' | 'progress' | 'sandbox') => void;
   onOpenDifficulty: () => void;
   onOpenProfile: () => void;
   onOpenPeriodicTable: () => void;
   onOpenEncyclopedia?: () => void;
+  onOpenRewards?: () => void;
   onToggleSound: () => void;
   onToggleReducedMotion: () => void;
   onNavigateHome: () => void;
@@ -38,11 +40,13 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenProfile,
   onOpenPeriodicTable,
   onOpenEncyclopedia,
+  onOpenRewards,
   onToggleSound,
   onToggleReducedMotion,
   onNavigateHome
 }) => {
   const currentDiff = DIFFICULTY_LABELS[profile.activeDifficulty];
+  const levelInfo = calculateLevel(profile.currentXP);
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-cyan-500/20 bg-slate-950/80 backdrop-blur-md">
@@ -58,14 +62,17 @@ export const Header: React.FC<HeaderProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="font-mono font-bold tracking-wider text-sm sm:text-base text-white">
-                CHEMISTRY MYSTERY
+                ELEMENTAR
+              </span>
+              <span className="text-[11px] text-amber-300 font-mono font-bold">
+                by Tarek Zakaria
               </span>
               <span className="hidden xl:inline-block text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800">
-                Lernspiel
+                Chemie-Lernspiel
               </span>
             </div>
             <p className="text-[10px] sm:text-xs text-cyan-400 font-mono tracking-tight hidden sm:block">
-              Das Geheimnis der Elemente
+              Das große Chemie-Abenteuer
             </p>
           </div>
         </div>
@@ -136,6 +143,19 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button
             type="button"
+            onClick={() => onChangeView('sandbox')}
+            className={`px-3 py-1.5 rounded-xl font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+              currentView === 'sandbox'
+                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
+                : 'text-slate-400 hover:text-white hover:bg-slate-850'
+            }`}
+          >
+            <FlaskConical className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Freies Labor</span>
+          </button>
+
+          <button
+            type="button"
             onClick={onOpenPeriodicTable}
             className="px-3 py-1.5 rounded-xl font-medium transition-all flex items-center gap-1.5 cursor-pointer text-cyan-400 hover:text-cyan-300 hover:bg-cyan-950/40 border border-transparent hover:border-cyan-800"
             title="Periodensystem der Elemente (PSE) aufschlagen"
@@ -175,11 +195,34 @@ export const Header: React.FC<HeaderProps> = ({
                 <div 
                   className="h-full bg-gradient-to-r from-cyan-500 to-emerald-400 transition-all duration-500"
                   style={{
-                    width: `${Math.min(100, Math.max(5, 100 - (profile.xpToNextLevel / 2)))}%`
+                    width: `${Math.min(100, Math.max(3, levelInfo.progressPercent))}%`
                   }}
                 />
               </div>
             </div>
+          </div>
+
+          {/* Kristall-Konto & Belohnungs-Button */}
+          {onOpenRewards && (
+            <button
+              type="button"
+              onClick={onOpenRewards}
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-amber-950/40 hover:bg-amber-900/50 border border-amber-500/40 text-amber-300 text-xs font-bold transition-all cursor-pointer shadow-sm group"
+              title="Forscher-Belohnungen & täglicher Bonus"
+            >
+              <span className="text-sm group-hover:scale-125 transition-transform">💎</span>
+              <span>{profile.rewards?.crystals || 0}</span>
+              <span className="hidden xl:inline text-[10px] text-amber-200/70 ml-0.5">Bonus</span>
+            </button>
+          )}
+
+          {/* Sterne-Zähler */}
+          <div 
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-amber-950/40 border border-amber-500/40 text-amber-300 text-xs font-bold font-mono shadow-sm"
+            title="Gesammelte Sterne aus allen Laborräumen"
+          >
+            <span className="text-amber-400 text-sm">★</span>
+            <span>{Object.values(profile.puzzleStars || {}).reduce((a, b) => a + b, 0)}</span>
           </div>
 
           {/* Streak Zähler */}
@@ -247,70 +290,6 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </div>
         </div>
-      </div>
-
-      {/* Mobile Navigationsleiste (unten fixiert auf Smartphones) */}
-      <div className="md:hidden flex items-center justify-around border-t border-slate-900 bg-slate-950/95 py-2 px-3 text-xs">
-        <button
-          type="button"
-          onClick={() => onChangeView('rooms')}
-          className={`flex flex-col items-center gap-0.5 ${
-            currentView === 'rooms' || currentView === 'missions' || currentView === 'puzzle'
-              ? 'text-cyan-400 font-bold'
-              : 'text-slate-400'
-          }`}
-        >
-          <LayoutGrid className="w-4 h-4" />
-          <span className="text-[10px]">Labore</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => onChangeView('cards')}
-          className={`flex flex-col items-center gap-0.5 relative ${
-            currentView === 'cards' ? 'text-cyan-400 font-bold' : 'text-slate-400'
-          }`}
-        >
-          <Layers className="w-4 h-4" />
-          <span className="text-[10px]">Karten</span>
-          {profile.elementCards.length > 0 && (
-            <span className="absolute -top-1 right-1 w-2 h-2 rounded-full bg-cyan-400" />
-          )}
-        </button>
-
-        <button
-          type="button"
-          onClick={() => onChangeView('review')}
-          className={`flex flex-col items-center gap-0.5 relative ${
-            currentView === 'review' ? 'text-amber-400 font-bold' : 'text-slate-400'
-          }`}
-        >
-          <RotateCcw className="w-4 h-4 text-amber-400" />
-          <span className="text-[10px]">Wiederholen</span>
-          {profile.failedPuzzlesToReview.length > 0 && (
-            <span className="absolute -top-1 right-2 w-2 h-2 rounded-full bg-amber-400 animate-ping" />
-          )}
-        </button>
-
-        <button
-          type="button"
-          onClick={() => onChangeView('progress')}
-          className={`flex flex-col items-center gap-0.5 ${
-            currentView === 'progress' ? 'text-cyan-400 font-bold' : 'text-slate-400'
-          }`}
-        >
-          <BookOpen className="w-4 h-4" />
-          <span className="text-[10px]">Module</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={onOpenPeriodicTable}
-          className="flex flex-col items-center gap-0.5 text-slate-400 hover:text-cyan-400 cursor-pointer"
-        >
-          <Atom className="w-4 h-4 text-cyan-400" />
-          <span className="text-[10px]">PSE</span>
-        </button>
       </div>
     </header>
   );

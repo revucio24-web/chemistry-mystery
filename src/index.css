@@ -149,3 +149,100 @@
 .animate-pulse-slow {
   animation: nucleus-pulse 3s ease-in-out infinite;
 }
+
+/* 18-Spalten-Gitter für das echte IUPAC-Periodensystem */
+.grid-cols-18 {
+  grid-template-columns: repeat(18, minmax(0, 1fr));
+}
+
+/* Lebendige Element-Kachel Bewegung & Quanten-Federung */
+.element-cell-hover {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, border-color 0.22s ease, filter 0.22s ease;
+}
+
+.element-cell-hover:hover {
+  transform: translateY(-3px) scale(1.08);
+  z-index: 30;
+}
+
+/* Aufsteigende Labor-Bläschen & Glanz */
+@keyframes bubble-rise {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(-30px) scale(1.2); opacity: 0; }
+}
+
+.animate-bubble {
+  animation: bubble-rise 2.5s ease-in-out infinite;
+}
+
+/* Schwebende Molekül- und Atom-Bewegung */
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(1.5deg); }
+}
+
+.animate-float {
+  animation: float-subtle 3.5s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.75; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.75; }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   REALE PHYSIK DER MATERIE (Aggregatzustände & Reaktionen)
+   "Wenn sich etwas im echten Leben bewegt, bewegt es sich im Game.
+    Wenn nicht, dann nicht!"
+   ============================================================ */
+
+/* 1. Gase: Schnelle thermische Brownsche Molekularbewegung im Raum */
+@keyframes gas-drift {
+  0% { transform: translate(0px, 0px); }
+  25% { transform: translate(3px, -7px); }
+  50% { transform: translate(-2px, -11px); }
+  75% { transform: translate(-4px, -4px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+.animate-gas-drift {
+  animation: gas-drift 4s ease-in-out infinite;
+}
+
+/* 2. Flüssigkeiten: Wellenartige Oberflächen- und Fließbewegung */
+@keyframes liquid-flow {
+  0%, 100% { transform: translateY(0px) scaleX(1); }
+  50% { transform: translateY(-3px) scaleX(1.03); }
+}
+
+.animate-liquid-flow {
+  animation: liquid-flow 3.2s ease-in-out infinite;
+}
+
+/* 3. Feststoffe: Kristallines Gitter – ruht fest auf dem Untergrund, kein freies Herumschweben! */
+.solid-stationary {
+  transform: none !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+}
+
+/* 4. Chemische Reaktion aktiv: Starke thermische Stöße & Kinetik der Reaktionspartner */
+@keyframes reaction-agitation {
+  0% { transform: translate(0, 0) scale(1); }
+  20% { transform: translate(-3px, 2px) scale(1.05); }
+  40% { transform: translate(3px, -2px) scale(0.96); }
+  60% { transform: translate(-2px, -3px) scale(1.03); }
+  80% { transform: translate(2px, 3px) scale(0.98); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.animate-reaction-agitation {
+  animation: reaction-agitation 0.4s ease-in-out infinite;
+}
+
+

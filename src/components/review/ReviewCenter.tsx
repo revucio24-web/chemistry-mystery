@@ -1,6 +1,6 @@
 import React from 'react';
 import { PlayerProfile } from '../../types/game';
-import { ELEMENTAL_LAB_PUZZLES } from '../../data/puzzles';
+import { ALL_PUZZLES } from '../../data/puzzles';
 import { soundEngine } from '../../engine/audio';
 import { 
   RotateCcw, 
@@ -21,7 +21,7 @@ export const ReviewCenter: React.FC<ReviewCenterProps> = ({
   onSelectPuzzle,
   onBackToMissions
 }) => {
-  const reviewPuzzles = ELEMENTAL_LAB_PUZZLES.filter(p =>
+  const reviewPuzzles = ALL_PUZZLES.filter(p =>
     profile.failedPuzzlesToReview.includes(p.id)
   );
 
@@ -50,7 +50,7 @@ export const ReviewCenter: React.FC<ReviewCenterProps> = ({
             </div>
           </div>
           <div className="w-12 h-12 rounded-xl bg-amber-950/60 border border-amber-800/60 flex items-center justify-center text-amber-400">
-            <RotateCcw className="w-6 h-6 animate-spin-slow" />
+            <RotateCcw className="w-6 h-6" />
           </div>
         </div>
       </div>

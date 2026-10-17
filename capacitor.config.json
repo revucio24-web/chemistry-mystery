@@ -1,0 +1,22 @@
+{
+  "appId": "de.aitarek.chemistrymystery",
+  "appName": "Elementar",
+  "webDir": "dist",
+  "backgroundColor": "#050811",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1200,
+      "launchAutoHide": true,
+      "backgroundColor": "#050811",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP"
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#050811"
+    }
+  }
+}

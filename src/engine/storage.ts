@@ -36,12 +36,34 @@ export function loadPlayerProfile(): PlayerProfile {
       failedPuzzlesToReview: Array.isArray(parsed.failedPuzzlesToReview)
         ? parsed.failedPuzzlesToReview
         : [],
+      puzzleStars: typeof parsed.puzzleStars === 'object' && parsed.puzzleStars !== null
+        ? parsed.puzzleStars
+        : {},
+      dailyQuests: Array.isArray(parsed.dailyQuests)
+        ? parsed.dailyQuests
+        : [],
+      equippedTheme: typeof parsed.equippedTheme === 'string'
+        ? parsed.equippedTheme
+        : 'theme_default',
+      unlockedThemes: Array.isArray(parsed.unlockedThemes) && parsed.unlockedThemes.length > 0
+        ? parsed.unlockedThemes
+        : ['theme_default'],
+      sparkyTipCount: typeof parsed.sparkyTipCount === 'number'
+        ? parsed.sparkyTipCount
+        : 0,
       elementCards: Array.isArray(parsed.elementCards)
         ? parsed.elementCards
         : [],
       badges: Array.isArray(parsed.badges)
         ? parsed.badges
-        : []
+        : [],
+      sandboxSyntheses: Array.isArray(parsed.sandboxSyntheses)
+        ? parsed.sandboxSyntheses
+        : [],
+      rewards: {
+        ...INITIAL_PLAYER_PROFILE.rewards,
+        ...(parsed.rewards || {})
+      }
     };
   } catch (error) {
     console.warn('Fehler beim Laden des Spielstands aus localStorage, Fallback auf Standardprofil:', error);
@@ -85,6 +107,7 @@ export function importPlayerSaveData(jsonString: string): PlayerProfile | null {
     const validatedProfile: PlayerProfile = {
       ...INITIAL_PLAYER_PROFILE,
       ...profileData,
+      rewards: { ...INITIAL_PLAYER_PROFILE.rewards, ...(profileData.rewards || {}) },
       stats: { ...INITIAL_PLAYER_PROFILE.stats, ...(profileData.stats || {}) },
       settings: { ...INITIAL_PLAYER_PROFILE.settings, ...(profileData.settings || {}) }
     };

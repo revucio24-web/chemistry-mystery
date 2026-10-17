@@ -16,7 +16,7 @@ interface CapacitorConfig {
 
 const config: CapacitorConfig = {
   appId: 'com.antigravity.chemistrymystery',
-  appName: 'Chemistry Mystery',
+  appName: 'Elementar',
   webDir: 'dist',
   bundledWebRuntime: false,
   server: {

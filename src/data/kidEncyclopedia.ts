@@ -27,7 +27,7 @@ export const KID_ENCYCLOPEDIA_ARTICLES: KidArticle[] = [
     emoji: '⚛️',
     title: 'Wie sieht ein Atom von innen aus?',
     subtitle: 'Protonen, Neutronen und sausende Elektronen!',
-    kidExplanation: 'Ein Atom besteht aus zwei Bereichen: dem festen Kern in der Mitte und der Hülle drumherum. Im Kern wohnen die Protonen (die haben eine positive Plus-Ladung ➕) und die Neutronen (die sind neutral ⚪). Um den Kern herum sausen die Elektronen (mit Minus-Ladung ➖) wie kleine Rennwagen!',
+    kidExplanation: 'Ein Atom besteht aus zwei Bereichen: dem festen Kern in der Mitte und der Hülle drumherum. Im Kern wohnen die roten Protonen mit Plus-Ladung (🔴 ➕) und die grünen Neutronen (🟢 neutral). Um den Kern herum sausen die blauen Elektronen mit Minus-Ladung (🔵 ➖) wie kleine Rennwagen!',
     analogy: 'Denke an Magnete: Plus und Minus ziehen sich magisch an! Weil der Kern positiv geladen ist, hält er die negativen Elektronen fest im Kreisverkehr, damit sie nicht wegfliegen.',
     dailyLifeExample: 'Wenn du mit Wollsocken über einen Teppich schlurfst und dann eine Türklinke anfasst, macht es manchmal "Patsch!" – da sind Elektronen von deinen Socken auf die Klinke gehüpft!',
     funFact: 'Elektronen sausen fast mit Lichtgeschwindigkeit um den Atomkern – über 2.000 Kilometer in einer einzigen Sekunde!',

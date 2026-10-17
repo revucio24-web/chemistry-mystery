@@ -43,6 +43,8 @@ export const MissionList: React.FC<MissionListProps> = ({
   };
 
   const completedCount = puzzles.filter(p => profile.completedPuzzleIds.includes(p.id)).length;
+  const roomStars = puzzles.reduce((acc, p) => acc + (profile.puzzleStars?.[p.id] || (profile.completedPuzzleIds.includes(p.id) ? 1 : 0)), 0);
+  const maxRoomStars = puzzles.length * 3;
 
   return (
     <div className="space-y-6">
@@ -61,12 +63,16 @@ export const MissionList: React.FC<MissionListProps> = ({
             <span>Zurück zur Labor-Übersicht</span>
           </button>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <h2 className="text-2xl sm:text-3xl font-bold text-white">
               {room.name}
             </h2>
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800 font-mono">
-              {completedCount} / {puzzles.length} abgeschlossen
+              {completedCount} / {puzzles.length} gelöst
+            </span>
+            <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-950/60 text-amber-300 border border-amber-800/60 font-mono flex items-center gap-1 font-bold">
+              <span className="text-amber-400">★</span>
+              <span>{roomStars} / {maxRoomStars} Sterne</span>
             </span>
           </div>
 
@@ -89,7 +95,7 @@ export const MissionList: React.FC<MissionListProps> = ({
             </div>
           </div>
           <div className="w-12 h-12 rounded-xl bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400">
-            <Atom className="w-6 h-6 animate-spin-slow" />
+            <Atom className="w-6 h-6" />
           </div>
         </div>
       </div>
@@ -161,6 +167,17 @@ export const MissionList: React.FC<MissionListProps> = ({
                 </div>
 
                 <div className="flex items-center gap-3 shrink-0 ml-3">
+                  {/* Sterne-Anzeige */}
+                  {isCompleted && (
+                    <div className="flex items-center gap-0.5 text-sm" title={`${profile.puzzleStars?.[puzzle.id] || 1} von 3 Sternen`}>
+                      {[1, 2, 3].map(s => (
+                        <span key={s} className={s <= (profile.puzzleStars?.[puzzle.id] || 1) ? 'text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.6)]' : 'text-slate-700 opacity-30'}>
+                          ★
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
                   <span className="text-xs font-mono font-semibold text-cyan-400 flex items-center gap-1">
                     <Sparkles className="w-3.5 h-3.5" />
                     <span>+{puzzle.xpReward} XP</span>

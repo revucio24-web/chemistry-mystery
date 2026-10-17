@@ -84,14 +84,23 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               <User className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+              <h3 className="text-xl font-bold text-white flex items-center gap-2 flex-wrap">
                 <span>Forscher-Akte: {profile.username}</span>
                 <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800">
                   Level {profile.level}
                 </span>
+                {profile.rewards?.activeTitle && (
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    {profile.rewards.activeTitle}
+                  </span>
+                )}
               </h3>
-              <p className="text-xs text-slate-400">
-                {profile.currentXP} Gesamt-XP • {profile.unlockedRooms.length} Laborbereiche freigeschaltet
+              <p className="text-xs text-slate-400 flex items-center gap-2 mt-0.5 flex-wrap">
+                <span>{profile.currentXP} Gesamt-XP</span>
+                <span>•</span>
+                <span className="text-amber-300 font-bold">💎 {profile.rewards?.crystals || 0} Kristalle</span>
+                <span>•</span>
+                <span>{profile.unlockedRooms.length} Labore freigeschaltet</span>
               </p>
             </div>
           </div>

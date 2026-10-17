@@ -50,13 +50,18 @@ if (jsFile) {
   html = html.replace('</body>', () => `<script>\n${safeJs}\n</script>\n</body>`);
 }
 
-// Write Chemistry-Mystery.html in chemi directory and in parent AITarek directory
-const outPathChemi = path.resolve('Chemistry-Mystery.html');
-const outPathParent = path.resolve('..', 'Chemistry-Mystery.html');
+// Write Elementar-Chemie-Abenteuer.html & Elementar.html & Chemistry-Mystery.html
+const outTargets = [
+  path.resolve('Elementar-Chemie-Abenteuer.html'),
+  path.resolve('..', 'Elementar-Chemie-Abenteuer.html'),
+  path.resolve('..', 'Elementar.html'),
+  path.resolve('Chemistry-Mystery.html'),
+  path.resolve('..', 'Chemistry-Mystery.html')
+];
 
-fs.writeFileSync(outPathChemi, html, 'utf8');
-fs.writeFileSync(outPathParent, html, 'utf8');
+for (const target of outTargets) {
+  fs.writeFileSync(target, html, 'utf8');
+}
 
 console.log('Erfolgreich fehlerfrei als Single-File HTML erstellt:');
-console.log('-', outPathChemi);
-console.log('-', outPathParent);
+outTargets.forEach(t => console.log('-', t));

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ElementCard } from '../../types/game';
-import { ELEMENTS_DATA, getElementByNumber } from '../../data/elements';
+import { getElementByNumber } from '../../data/elements';
+import { ALL_PUZZLES } from '../../data/puzzles';
 import { AtomVisualizer } from '../visualizers/AtomVisualizer';
 import { soundEngine } from '../../engine/audio';
 import { getElementSuperpower } from '../../data/elementSuperpowers';
@@ -23,7 +24,11 @@ export const ElementCardAlbum: React.FC<ElementCardAlbumProps> = ({ collectedCar
   const [filterRarity, setFilterRarity] = useState<'all' | 'common' | 'rare' | 'legendary'>('all');
   const [search, setSearch] = useState('');
 
-  const totalPossible = ELEMENTS_DATA.length;
+  const totalPossible = new Set(
+    ALL_PUZZLES
+      .map(p => p.rewardElementAtomicNumber)
+      .filter((n): n is number => typeof n === 'number')
+  ).size;
 
   const handleCardClick = (card: ElementCard) => {
     soundEngine.playClick();
@@ -233,8 +238,8 @@ export const ElementCardAlbum: React.FC<ElementCardAlbumProps> = ({ collectedCar
                       <Atom className="w-3.5 h-3.5" />
                       <span>Bohrsches Schalenmodell</span>
                     </span>
-                    <span className="text-[10px] text-slate-500 font-mono">
-                      Z={fullElement.atomicNumber} • {fullElement.protons}p⁺ / {fullElement.neutrons}n⁰
+                    <span className="text-[10px] text-slate-400 font-mono">
+                      Z={fullElement.atomicNumber} • <span className="text-red-400 font-bold">{fullElement.protons}p⁺</span> / <span className="text-emerald-400 font-bold">{fullElement.neutrons}n⁰</span>
                     </span>
                   </div>
                   <AtomVisualizer

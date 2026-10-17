@@ -1,4 +1,4 @@
-# CHEMISTRY MYSTERY – Das Geheimnis der Elemente 🧪⚡
+# ELEMENTAR – Das große Chemie-Abenteuer 🧪⚡
 
 > **Ein intelligentes, didaktisch fundiertes Chemie-Rätselspiel für Kinder, Jugendliche und Erwachsene.**  
 > Entdecke die Welt der Atome, Moleküle und chemischen Reaktionen in einem futuristischen Forschungslabor – mit echtem wissenschaftlichen Verständnis statt bloßem Raten.
@@ -59,53 +59,53 @@ Die Laborwelt schaltet sich schrittweise durch gesammelte Erfahrungspunkte (XP) 
    - *M1: Glyphen der Alchemie* (Elementsymbole)
    - *M2: Elementar-Wahrheitsfilter* (Protonenzahl definiert Element)
    - *M3: Das flüchtige Edelgas* (Helium-Eigenschaften)
-   - *M4: Schleusencode Alpha* (Ordnungszahlen C & Fe)
-   - *M5: Synthese der Lebensquelle* ($H_2O$-Molekülbau)
-   - *M6: Knallgas-Reaktion* (Massenerhaltung $2 H_2 + O_2 \to 2 H_2O$)
-   - *M7: Der Kalk-Säuretest* (Nachweis von Marmor mit Säure)
-   - *M8: Der Fall der grünen Flamme* (Kupfer-Flammenfärbung)
-   - *M9: Die Legierung der Wikinger* (Eisen & Kohlenstoff)
-   - *M10: Finale des Elementarlabors* (Molekül vs. Verbindung)
+   - *M4: Molekül-Synthese: Das Lebenselixier* ($H_2O$-Molekülbau)
+   - *M5: Der Code des Chemikers* (Schleusencode aus Ordnungszahlen & Valenzelektronen)
+   - *M6: Analyseprobe X-21: Das weiße Pulver* (Salz-Nachweis durch Labortests)
+   - *M7: Die Gleichung der Knallgasreaktion* (Massenerhaltung $2 H_2 + O_2 \to 2 H_2O$)
+   - *M8: Fallakte 01: Das angelaufene Silberbesteck* (chemische Reaktion vs. physikalischer Vorgang)
+   - *M9: Physikalisch oder Chemisch?* (Unterscheidung von Zustandsänderung & Stoffumwandlung)
+   - *M10: Die Trennlinie der Elemente* (Metalle, Halbmetalle & Nichtmetalle)
 
 2. **Die Atomkammer (4 Missionen):**
-   - *M11: Kernbausteine-Kalibrierung* ($p^+$, $n^0$, $e^-$)
-   - *M12: Die Ionenfalle* (Kationen und Anionen, Ladungsdifferenz)
-   - *M13: Das Schalenmodell von Bohr* (K-, L-, M-Schalen und Oktettregel)
-   - *M14: Radiokarbon-Detektiv* (C-14 Zerfall und Altersbestimmung)
+   - *M11: Der Kern des Leuchtens* (Neon, Gruppen & Perioden)
+   - *M12: Das Codeschloss der Ionenfalle* (Kationen und Anionen, Ladungsdifferenz)
+   - *M13: Atomhülle und Ladungsneutralität* ($p^+$, $n^0$, $e^-$ und Ladungsausgleich)
+   - *M14: Fallakte 02: Die Radiokarbon-Zeitreise* (C-14 Zerfall und Altersbestimmung)
 
 3. **Die Molekülwerkstatt (4 Missionen):**
-   - *M15: Methangas-Synthese* ($CH_4$-Tetraederstruktur)
-   - *M16: Kohlendioxid-Balance* ($CO_2$-Linearstruktur und Doppelbindungen)
-   - *M17: Ammoniak-Synthese* ($NH_3$-Pyramidenstruktur)
-   - *M18: Die Formel-Schleuse* (Unterschied Atom, Molekül, Verbindung)
+   - *M15: Erdgas-Synthese: Das Methanmolekül* ($CH_4$-Tetraederstruktur)
+   - *M16: Treibhausgas-Synthese: Kohlenstoffdioxid* ($CO_2$-Linearstruktur und Doppelbindungen)
+   - *M17: Dünger-Baustein: Ammoniak* ($NH_3$-Pyramidenstruktur)
+   - *M18: Atom vs. Molekül vs. Verbindung* (Die Formel-Schleuse)
 
 4. **Der Reaktionsraum (4 Missionen):**
-   - *M19: Methan-Verbrennung* ($CH_4 + 2 O_2 \to CO_2 + 2 H_2O$)
-   - *M20: Haber-Bosch-Synthese* ($N_2 + 3 H_2 \to 2 NH_3$)
-   - *M21: Kochsalz-Synthese* ($2 Na + Cl_2 \to 2 NaCl$)
-   - *M22: Edukt-Produkt-Scanner* (Exotherme/Endotherme Energieanalyse)
+   - *M19: Verbrennung von Methan* ($CH_4 + 2 O_2 \to CO_2 + 2 H_2O$)
+   - *M20: Die Haber-Bosch-Reaktionsschleife* ($N_2 + 3 H_2 \to 2 NH_3$)
+   - *M21: Heftige Vereinigung: Kochsalz-Synthese* ($2 Na + Cl_2 \to 2 NaCl$)
+   - *M22: Edukt oder Produkt?* (Exotherme/Endotherme Energieanalyse)
 
 5. **Das Kristallarchiv (4 Missionen):**
-   - *M23: Das Ionengitter-Rätsel* (Leitfähigkeit von Salzschmelze vs. Salzkristall)
-   - *M24: Die Phasenübergangs-Schleuse* (Sublimation von Iod)
-   - *M25: Der geheimnisvolle Kalkstein* ($CaCO_3$-Kohlendioxid-Nachweis)
-   - *M26: Katzengold-Detektiv* (Pyrit vs. echtes Gold Dichte- & Härtevergleich)
+   - *M23: Die Ordnung der Salzkristalle* (Leitfähigkeit von Salzschmelze vs. Salzkristall)
+   - *M24: Mineralanalyse: Der Säuretest* ($CaCO_3$-Kohlendioxid-Nachweis)
+   - *M25: Phasenübergänge der Materie* (Aggregatzustände & Sublimation am Trockeneis)
+   - *M26: Fallakte 03: Echtes Gold oder Narrengold?* (Pyrit vs. echtes Gold – Dichte-Vergleich)
 
 6. **Die Wasserstation (4 Missionen):**
-   - *M27: Die pH-Wert-Skala* (Zuordnung von Magensäure, Wasser, Seife pH 1–13)
-   - *M28: Das Geheimnis des Wasser-Dipols* (Elektronegativität & Wasserstoffbrücken)
-   - *M29: Der Indikator-Farbumschlag* (Rotkohlsaft im sauren und basischen Milieu)
-   - *M30: Reinstwasser-Aufbereitung* (Filtration vs. Destillation)
+   - *M27: Der pH-Code der Neutralisationsschleuse* (pH-Skala 0–14)
+   - *M28: Wasser als Dipolmolekül* (Elektronegativität & Wasserstoffbrücken)
+   - *M29: Indikator-Farben im Testlabor* (Rotkohlsaft im sauren und basischen Milieu)
+   - *M30: Trennverfahren des Alltags* (Filtration vs. Destillation)
 
 7. **Das Umweltlabor (4 Missionen):**
-   - *M31: Lithium-Ionen-Akkus* (Interkalation und moderne Energiespeicherung)
-   - *M32: Grüne Wasserstoff-Elektrolyse* ($2 H_2O \to 2 H_2 + O_2$)
-   - *M33: Kunststoff-Recycling* (Thermoplaste vs. Duroplaste)
-   - *M34: Aktivkohle-Filterung* (Oberflächenadsorption von Giftstoffen)
+   - *M31: Das Herz der Elektromobilität* (Lithium-Ionen-Akkus)
+   - *M32: Grüner Wasserstoff per Elektrolyse* ($2 H_2O \to 2 H_2 + O_2$)
+   - *M33: Kunststoffe und Recycling* (Thermoplaste vs. Duroplaste)
+   - *M34: Fallakte 04: Die geheimnisvolle Wasserverunreinigung* (Aktivkohle-Adsorption)
 
 8. **Das geheime Forschungslabor (2 Meisterschaftsmissionen):**
-   - *M35: Das Meisterschafts-Experiment* (Katalysator-Wirkung & Aktivierungsenergie)
-   - *M36: Der finale Instituts-Tresor* (Großes Abschlussrätsel Code 784)
+   - *M35: Das finale Meisterschaftsmysterium* (Katalysator-Wirkung & Aktivierungsenergie)
+   - *M36: Der Meister-Cipher des Instituts* (Großes Abschlussrätsel Code 784)
 
 ---
 
@@ -114,7 +114,7 @@ Die Laborwelt schaltet sich schrittweise durch gesammelte Erfahrungspunkte (XP) 
 Das Spiel verzichtet bewusst auf monotone Multiple-Choice-Einbahnstraßen:
 
 1. **Elemente zuordnen (`ElementMatch.tsx`):** Taktiles Zuordnen von chemischen Symbolen, lateinischen Ursprüngen und deutschen Elementnamen.
-2. **Molekülbaukasten (`MoleculeBuilder.tsx`):** Virtuelles Hinzufügen und Entfernen von Atomen mit Echtzeit-Valenz- und Formelprüfung.
+2. **Molekülbaukasten (`MoleculeBuilder.tsx`):** Virtuelles Hinzufügen und Entfernen von Atomen aus einem begrenzten Elementvorrat mit Prüfung der Atomzusammensetzung gegen das Zielmolekül.
 3. **Labor entschlüsseln (`LabDoorCipher.tsx`):** Futuristisches Nummern-Terminal zum Errechnen von Ordnungszahlen, Massen und Valenzen für Sicherheitsschleusen.
 4. **Reaktionsgleichungen ausgleichen (`EquationBalancer.tsx`):** Schrittweises Erhöhen von Koeffizienten mit Atomzähler auf Edukt- und Produktseite zur Veranschaulichung der Massenerhaltung.
 5. **Unbekannte Stoffproben analysieren (`SubstanceAnalysis.tsx`):** Durchführung sicherer virtueller Vortests (Flammenfärbung, pH-Wert, Löslichkeit, Säurereaktion).
@@ -140,7 +140,7 @@ Falsch beantwortete Rätsel werden automatisch in einer Wiederholungs-Warteschla
 
 ### Periodensystem der Elemente (PSE-Modal)
 - Jederzeit über den Header oder **direkt während eines Rätsels** mit 1 Klick aufrufbar.
-- 38 vollständig erfasste Elemente mit Massen, Wertigkeiten, Alltagsbeispielen und Fun Facts.
+- 118 vollständig erfasste Elemente mit Massen, Wertigkeiten, Alltagsbeispielen und Fun Facts.
 - Filterbar nach Alkalimetallen, Erdalkalimetallen, Halogenen, Edelgasen, Übergangsmetallen etc.
 
 ### Holografisches Sammelalbum (`ElementCardAlbum.tsx`)
@@ -215,7 +215,7 @@ npm run cap:android
 
 ## 🧪 Qualitätssicherung & Automatisierte Tests
 
-Das Projekt verfügt über eine umfassende Vitest-Testsuite mit **46 automatisierten Tests** über 7 Testsuiten:
+Das Projekt verfügt über eine umfassende Vitest-Testsuite mit **96 automatisierten Tests** über 16 Testsuiten:
 
 ```bash
 # Tests ausführen
@@ -233,6 +233,10 @@ npm run build
 5. `designAndAtmospherePhase4.test.ts`: Periodensystem-Atlas, Bohr-Schalenberechnung $\sum e^- = Z$, Web Audio Engine
 6. `learningAndStorage.test.ts`: Spielstand-Serialisierung & Backup-Import
 7. `fullQualityAssurancePhase5.test.ts`: Klammerauflösung $(NH_4)_3PO_4$, LocalStorage-Resilienz gegen defektes JSON, endlos skalierendes Levelsystem (100.000 XP), Stressresilienz aller 36 Rätsel
+8. `authenticScientificData.test.ts` & `realWorldPhysicsMotion.test.ts`: Physikalische Echtdaten & Quantenmechanik-Anomalien der Elektronenkonfiguration
+9. `periodicTableAndMotion.test.ts`, `microcosmZoom.test.tsx` & `periodicTableTextbookFullscreen.test.tsx`: PSE-Darstellung, Quantensprung-Animation & Vollbild-Modus
+10. `rewardEngine.test.ts` & `wholeSystemUpgrade.test.ts`: Sterne, Tagesquests, Themes, Audio & Haptik
+11. `renderApp.test.tsx` & `interactiveApp.test.tsx`: UI-Rendering & Interaktionsabläufe
 
 ---
 
