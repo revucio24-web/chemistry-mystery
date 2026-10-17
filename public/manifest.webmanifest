@@ -1,8 +1,8 @@
 {
   "id": "/",
-  "name": "Chemistry Mystery – Das Geheimnis der Elemente",
-  "short_name": "Chemistry Mystery",
-  "description": "Das intelligente Chemie Rätselspiel: Entdecke die Geheimnisse der chemischen Elemente in einem futuristischen Wissenschaftslabor.",
+  "name": "Elementar – Das große Chemie-Abenteuer",
+  "short_name": "Elementar",
+  "description": "Das intelligente Chemie-Rätselspiel: Entdecke die Geheimnisse der chemischen Elemente in einem futuristischen Wissenschaftslabor.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

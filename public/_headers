@@ -1,0 +1,11 @@
+/*
+  X-Content-Type-Options: nosniff
+
+/sw.js
+  Cache-Control: no-cache
+
+/registerSW.js
+  Cache-Control: no-cache
+
+/manifest.webmanifest
+  Content-Type: application/manifest+json

@@ -27,5 +27,12 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true
+  },
+  // Windows-Fix: esbuild legt fuer das grosse Bundle eine Temp-Datei in %TEMP% an,
+  // die vom Virenscanner blockiert wird (Access is denied). Mit target "esnext" und
+  // dem terser-Minifier umgehen wir esbuild fuer das Bundle -> stabiler lokaler Build.
+  build: {
+    target: 'esnext',
+    minify: 'terser',
   }
 });
