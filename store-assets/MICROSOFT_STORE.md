@@ -143,7 +143,7 @@ Internet nur beim ersten Start nötig
 | Preis | Kostenlos |
 | Märkte | Alle |
 | Altersfreigabe | IARC-Fragebogen → keine Gewalt, kein Glücksspiel, keine Käufe → **USK 0 / PEGI 3** |
-| Datenschutz-URL | `https://<deine-domain>/privacy` (Datei: `store-assets/PRIVACY_POLICY.html`) |
+| Datenschutz-URL | `https://revucio24-web.github.io/chemistry-mystery/privacy/` |
 | Support-Kontakt | `support@aitarek.de` |
 | Website | `https://aitarek.de` |
 | Copyright | `© 2026 AITarek` |
@@ -166,5 +166,5 @@ Internet nur beim ersten Start nötig
 ## 5. Offene Punkte, die ich mit dir klären muss
 
 1. **Markenname.** Im Code heißen drei Dinge anders: Manifest `Chemistry Mystery`, `<title>` `Elementar – Das große Chemie-Abenteuer`, Play-Listing `Chemistry Mystery: Chemie Labor`. Microsoft prüft, ob Listing und App übereinstimmen. Empfehlung: überall „Chemistry Mystery", „Elementar" als Untertitel.
-2. **Google Fonts.** `index.html` lädt Schriften von `fonts.googleapis.com`. Das überträgt die IP jedes Nutzers an Google – im Widerspruch zur Datenschutzerklärung („keine Datenübertragung") und bei einer Kinder-App heikel. Fix: Schriften lokal bündeln (~200 KB).
-3. **aitarek.de löst nicht auf.** Die Domain aus der Datenschutzerklärung ist aktuell nicht erreichbar. Datenschutz-URL und Support-Website brauchen aber eine echte, erreichbare Adresse.
+2. ~~**Google Fonts.**~~ **Erledigt:** Schriften sind über `@fontsource` lokal gebündelt, `index.html` enthält keine externen Font-Aufrufe mehr. `dist/` enthält 9 woff2-Dateien, der Precache ist auf 1,1 MB gewachsen.
+3. **aitarek.de löst nicht auf.** Die Domain aus der Datenschutzerklärung ist aktuell nicht erreichbar – die Support-Adresse `support@aitarek.de` könnte also ins Leere laufen. Microsoft verlangt eine erreichbare Kontaktadresse.
