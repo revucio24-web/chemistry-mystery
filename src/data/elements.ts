@@ -397,7 +397,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 21,
     valency: [3],
     colorHex: '#94a3b8',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 4 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 4 des Periodensystems.',
     funFact: 'In der Natur bildet Scandium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -435,7 +435,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 23,
     valency: [5],
     colorHex: '#a855f7',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 4 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 4 des Periodensystems.',
     funFact: 'In der Natur bildet Vanadium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -473,7 +473,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 25,
     valency: [2, 4, 7],
     colorHex: '#ec4899',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 4 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 4 des Periodensystems.',
     funFact: 'In der Natur bildet Mangan charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -511,7 +511,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 27,
     valency: [2, 3],
     colorHex: '#3b82f6',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 4 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 4 des Periodensystems.',
     funFact: 'In der Natur bildet Cobalt charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -587,7 +587,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 31,
     valency: [3],
     colorHex: '#818cf8',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der post transition_metal. Es gehört zur Periode 4 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Nachübergangsmetalle. Es gehört zur Periode 4 des Periodensystems.',
     funFact: 'In der Natur bildet Gallium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -606,7 +606,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 32,
     valency: [4],
     colorHex: '#34d399',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der metalloid. Es gehört zur Periode 4 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Halbmetalle. Es gehört zur Periode 4 des Periodensystems.',
     funFact: 'In der Natur bildet Germanium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -625,7 +625,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 33,
     valency: [3, 5],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der metalloid. Es gehört zur Periode 4 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Halbmetalle. Es gehört zur Periode 4 des Periodensystems.',
     funFact: 'In der Natur bildet Arsen charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -644,7 +644,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 34,
     valency: [2, 4],
     colorHex: '#eab308',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der reactive nonmetal. Es gehört zur Periode 4 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der reaktiven Nichtmetalle. Es gehört zur Periode 4 des Periodensystems.',
     funFact: 'In der Natur bildet Selen charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -701,7 +701,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 37,
     valency: [1],
     colorHex: '#f43f5e',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der alkali metal. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Alkalimetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Rubidium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -720,7 +720,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 38,
     valency: [2],
     colorHex: '#fb923c',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der alkaline earth. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Erdalkalimetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Strontium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -739,7 +739,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 39,
     valency: [3],
     colorHex: '#94a3b8',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Yttrium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -758,7 +758,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 40,
     valency: [4],
     colorHex: '#38bdf8',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Zirconium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -777,7 +777,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 41,
     valency: [5],
     colorHex: '#a855f7',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Niob charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -796,7 +796,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 42,
     valency: [6],
     colorHex: '#cbd5e1',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Molybdän charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -815,7 +815,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 43,
     valency: [7],
     colorHex: '#f43f5e',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Technetium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -834,7 +834,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 44,
     valency: [3, 4],
     colorHex: '#64748b',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Ruthenium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -853,7 +853,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 45,
     valency: [3],
     colorHex: '#e2e8f0',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Rhodium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -872,7 +872,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 46,
     valency: [2, 4],
     colorHex: '#94a3b8',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Palladium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -910,7 +910,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 48,
     valency: [2],
     colorHex: '#fbbf24',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Cadmium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -929,7 +929,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 49,
     valency: [3],
     colorHex: '#818cf8',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der post transition_metal. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Nachübergangsmetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Indium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -967,7 +967,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 51,
     valency: [3, 5],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der metalloid. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Halbmetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Antimon charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -986,7 +986,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 52,
     valency: [2, 4],
     colorHex: '#facc15',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der metalloid. Es gehört zur Periode 5 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Halbmetalle. Es gehört zur Periode 5 des Periodensystems.',
     funFact: 'In der Natur bildet Tellur charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1043,7 +1043,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 55,
     valency: [1],
     colorHex: '#f43f5e',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der alkali metal. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Alkalimetalle. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Caesium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1081,7 +1081,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 57,
     valency: [3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Lanthan charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1100,7 +1100,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 58,
     valency: [3, 4],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Cer charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1119,7 +1119,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 59,
     valency: [3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Praseodym charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1138,7 +1138,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 60,
     valency: [3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Neodym charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1157,7 +1157,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 61,
     valency: [3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Promethium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1176,7 +1176,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 62,
     valency: [3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Samarium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1195,7 +1195,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 63,
     valency: [2, 3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Europium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1214,7 +1214,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 64,
     valency: [3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Gadolinium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1233,7 +1233,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 65,
     valency: [3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Terbium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1252,7 +1252,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 66,
     valency: [3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Dysprosium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1271,7 +1271,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 67,
     valency: [3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Holmium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1290,7 +1290,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 68,
     valency: [3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Erbium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1309,7 +1309,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 69,
     valency: [3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Thulium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1328,7 +1328,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 70,
     valency: [3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Ytterbium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1347,7 +1347,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 71,
     valency: [3],
     colorHex: '#2dd4bf',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der lanthanide. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Lanthanoide. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Lutetium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1366,7 +1366,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 72,
     valency: [4],
     colorHex: '#38bdf8',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Hafnium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1385,7 +1385,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 73,
     valency: [5],
     colorHex: '#a855f7',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Tantal charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1404,7 +1404,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 74,
     valency: [6],
     colorHex: '#cbd5e1',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Wolfram charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1423,7 +1423,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 75,
     valency: [7],
     colorHex: '#94a3b8',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Rhenium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1442,7 +1442,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 76,
     valency: [4, 8],
     colorHex: '#64748b',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Osmium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1461,7 +1461,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 77,
     valency: [4],
     colorHex: '#e2e8f0',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Iridium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1537,7 +1537,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 81,
     valency: [1, 3],
     colorHex: '#818cf8',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der post transition_metal. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Nachübergangsmetalle. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Thallium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1575,7 +1575,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 83,
     valency: [3, 5],
     colorHex: '#a855f7',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der post transition_metal. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Nachübergangsmetalle. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Bismut charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1594,7 +1594,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 84,
     valency: [2, 4],
     colorHex: '#22c55e',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der post transition_metal. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Nachübergangsmetalle. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Polonium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1613,7 +1613,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 85,
     valency: [1],
     colorHex: '#8b5cf6',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der metalloid. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Halbmetalle. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Astat charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1632,7 +1632,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 86,
     valency: [0],
     colorHex: '#c084fc',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der noble gas. Es gehört zur Periode 6 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Edelgase. Es gehört zur Periode 6 des Periodensystems.',
     funFact: 'In der Natur bildet Radon charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1651,7 +1651,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 87,
     valency: [1],
     colorHex: '#f43f5e',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der alkali metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Alkalimetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'In der Natur bildet Francium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1670,7 +1670,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 88,
     valency: [2],
     colorHex: '#fb923c',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der alkaline earth. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Erdalkalimetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'In der Natur bildet Radium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1689,7 +1689,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 89,
     valency: [3],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'In der Natur bildet Actinium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1708,7 +1708,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 90,
     valency: [4],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'In der Natur bildet Thorium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1727,7 +1727,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 91,
     valency: [5],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'In der Natur bildet Protactinium charakteristische Verbindungen und Kristalle mit spezifischen Bindungseigenschaften.',
     realWorldUse: 'Verwendung in Wissenschaft, Speziallegierungen und Hochtechnologie-Anwendungen.'
   },
@@ -1765,7 +1765,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 93,
     valency: [5],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Neptunium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -1784,7 +1784,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 94,
     valency: [4],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Plutonium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -1803,7 +1803,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 95,
     valency: [3],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Americium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -1822,7 +1822,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 96,
     valency: [3],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Curium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -1841,7 +1841,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 97,
     valency: [3],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Berkelium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -1860,7 +1860,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 98,
     valency: [3],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Californium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -1879,7 +1879,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 99,
     valency: [3],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Einsteinium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -1898,7 +1898,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 100,
     valency: [3],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Fermium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -1917,7 +1917,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 101,
     valency: [3],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Mendelevium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -1936,7 +1936,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 102,
     valency: [2],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Nobelium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -1955,7 +1955,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 103,
     valency: [3],
     colorHex: '#a3e635',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der actinide. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Actinoide. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Lawrencium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -1974,7 +1974,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 104,
     valency: [4],
     colorHex: '#38bdf8',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Rutherfordium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -1993,7 +1993,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 105,
     valency: [5],
     colorHex: '#a855f7',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Dubnium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -2012,7 +2012,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 106,
     valency: [6],
     colorHex: '#cbd5e1',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Seaborgium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -2031,7 +2031,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 107,
     valency: [7],
     colorHex: '#ec4899',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Bohrium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -2050,7 +2050,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 108,
     valency: [8],
     colorHex: '#64748b',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Hassium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -2069,7 +2069,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 109,
     valency: [4],
     colorHex: '#e2e8f0',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Meitnerium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -2088,7 +2088,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 110,
     valency: [4],
     colorHex: '#94a3b8',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Darmstadtium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -2107,7 +2107,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 111,
     valency: [3],
     colorHex: '#fbbf24',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Roentgenium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -2126,7 +2126,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 112,
     valency: [2],
     colorHex: '#06b6d4',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der transition metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Übergangsmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Copernicium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -2145,7 +2145,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 113,
     valency: [1],
     colorHex: '#818cf8',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der post transition_metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Nachübergangsmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Nihonium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -2164,7 +2164,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 114,
     valency: [2],
     colorHex: '#cbd5e1',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der post transition_metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Nachübergangsmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Flerovium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -2183,7 +2183,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 115,
     valency: [1],
     colorHex: '#a855f7',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der post transition_metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Nachübergangsmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Moscovium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -2202,7 +2202,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 116,
     valency: [2],
     colorHex: '#22c55e',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der post transition_metal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Nachübergangsmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Livermorium ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -2221,7 +2221,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 117,
     valency: [1],
     colorHex: '#8b5cf6',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der reactive nonmetal. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der reaktiven Nichtmetalle. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Tenness ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   },
@@ -2240,7 +2240,7 @@ export const ELEMENTS_DATA: ChemicalElement[] = [
     electrons: 118,
     valency: [0],
     colorHex: '#c084fc',
-    description: 'Ein faszinierendes chemisches Element aus der Gruppe der noble gas. Es gehört zur Periode 7 des Periodensystems.',
+    description: 'Ein faszinierendes chemisches Element aus der Gruppe der Edelgase. Es gehört zur Periode 7 des Periodensystems.',
     funFact: 'Das Element Oganesson ist ein künstliches Transuran, das in Schwerionen-Teilchenbeschleunigern erzeugt wurde.',
     realWorldUse: 'Grundlagenforschung in der Kernphysik und Suche nach der Insel der Stabilität.'
   }

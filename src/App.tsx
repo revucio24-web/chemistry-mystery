@@ -46,16 +46,30 @@ export const App: React.FC = () => {
     } else {
       document.body.classList.remove('reduced-motion');
     }
-
-    // Tagesaufträge initialisieren
-    const today = getTodayDateString();
-    const quests = generateDailyQuests(today, profile.dailyQuests);
-    if (!profile.dailyQuests || profile.dailyQuests.length === 0 || profile.dailyQuests[0]?.id !== quests[0]?.id) {
-      const updated = { ...profile, dailyQuests: quests };
-      setProfile(updated);
-      savePlayerProfile(updated);
-    }
   }, [profile.settings]);
+
+  // Tagesaufträge initialisieren und bei Tageswechsel automatisch erneuern
+  useEffect(() => {
+    const syncQuests = () => {
+      setProfile(prev => {
+        const quests = generateDailyQuests(getTodayDateString(), prev.dailyQuests);
+        if (!prev.dailyQuests || prev.dailyQuests.length === 0 || prev.dailyQuests[0]?.id !== quests[0]?.id) {
+          const updated = { ...prev, dailyQuests: quests };
+          savePlayerProfile(updated);
+          return updated;
+        }
+        return prev;
+      });
+    };
+
+    syncQuests();
+
+    const now = new Date();
+    const nextMidnight = new Date(now);
+    nextMidnight.setHours(24, 0, 0, 0);
+    const timer = window.setTimeout(syncQuests, nextMidnight.getTime() - now.getTime());
+    return () => window.clearTimeout(timer);
+  }, []);
 
   const activeTheme = LAB_THEMES.find(t => t.id === profile.equippedTheme) || LAB_THEMES[0];
 
@@ -153,7 +167,7 @@ export const App: React.FC = () => {
                 <span>Interaktives Chemie-Abenteuer</span>
               </div>
               <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-                Elementar: Das große Chemie-Abenteuer
+                Chemistry Mystery: Das große Chemie-Abenteuer
               </h1>
               <p className="text-xs sm:text-sm text-amber-300 font-mono font-bold mt-1">
                 by Tarek Zakaria
@@ -267,6 +281,7 @@ export const App: React.FC = () => {
 
         {view === 'puzzle' && (
           <PuzzleRunner
+            key={currentPuzzle.id}
             puzzle={currentPuzzle}
             profile={profile}
             onUpdateProfile={handleUpdateProfile}
@@ -382,7 +397,7 @@ export const App: React.FC = () => {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2 text-slate-400">
             <FlaskConical className="w-4 h-4 text-cyan-500" />
-            <span>Elementar – Das große Chemie-Abenteuer</span>
+            <span>Chemistry Mystery – Das große Chemie-Abenteuer</span>
           </div>
 
           <div className="flex items-center gap-4 text-[11px] text-slate-400">

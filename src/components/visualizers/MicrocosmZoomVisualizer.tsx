@@ -79,16 +79,13 @@ export const MicrocosmZoomVisualizer: React.FC<MicrocosmZoomVisualizerProps> = (
   useEffect(() => {
     if (isAutoFlying) {
       autoFlyTimerRef.current = setTimeout(() => {
-        setCurrentStage(prev => {
-          if (prev < 4) {
-            soundEngine.playAtomOrbit();
-            return (prev + 1) as ZoomStage;
-          } else {
-            setIsAutoFlying(false);
-            soundEngine.playSuccess();
-            return 4;
-          }
-        });
+        if (currentStage < 4) {
+          soundEngine.playAtomOrbit();
+          setCurrentStage((currentStage + 1) as ZoomStage);
+        } else {
+          soundEngine.playSuccess();
+          setIsAutoFlying(false);
+        }
       }, 3200);
     }
     return () => {

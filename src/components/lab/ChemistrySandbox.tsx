@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { soundEngine } from '../../engine/audio';
 import { PlayerProfile } from '../../types/game';
 import { savePlayerProfile } from '../../engine/storage';
@@ -118,6 +118,18 @@ export const ChemistrySandbox: React.FC<ChemistrySandboxProps> = ({
   const [reactionMessage, setReactionMessage] = useState<string | null>(null);
   const [discoveredFormulas, setDiscoveredFormulas] = useState<string[]>(() => profile.sandboxSyntheses || []);
 
+  const reactionTimerRef = useRef<number | null>(null);
+  const profileRef = useRef(profile);
+  const discoveredFormulasRef = useRef(discoveredFormulas);
+
+  useEffect(() => { profileRef.current = profile; }, [profile]);
+  useEffect(() => { discoveredFormulasRef.current = discoveredFormulas; }, [discoveredFormulas]);
+  useEffect(() => () => {
+    if (reactionTimerRef.current !== null) {
+      window.clearTimeout(reactionTimerRef.current);
+    }
+  }, []);
+
   const handleAddAtom = (symbol: string) => {
     if (selectedAtoms.length >= 10) return;
     soundEngine.playFlaskBubble();
@@ -140,13 +152,18 @@ export const ChemistrySandbox: React.FC<ChemistrySandboxProps> = ({
     soundEngine.triggerHaptic('medium');
     setIsReacting(true);
 
+    if (reactionTimerRef.current !== null) {
+      window.clearTimeout(reactionTimerRef.current);
+    }
+
     // Zähle Atome
     const counts: Record<string, number> = {};
     for (const a of selectedAtoms) {
       counts[a] = (counts[a] || 0) + 1;
     }
 
-    setTimeout(() => {
+    reactionTimerRef.current = window.setTimeout(() => {
+      reactionTimerRef.current = null;
       setIsReacting(false);
 
       // Finde passende Synthese
@@ -168,22 +185,25 @@ export const ChemistrySandbox: React.FC<ChemistrySandboxProps> = ({
           confetti({ particleCount: 60, spread: 60, origin: { y: 0.6 } });
         } catch {}
 
-        if (!discoveredFormulas.includes(match.formula)) {
-          const nextFormulas = [...discoveredFormulas, match.formula];
+        const currentProfile = profileRef.current;
+        const currentFormulas = discoveredFormulasRef.current;
+        if (!currentFormulas.includes(match.formula)) {
+          const nextFormulas = [...currentFormulas, match.formula];
           setDiscoveredFormulas(nextFormulas);
+          discoveredFormulasRef.current = nextFormulas;
 
           // Belohnung: 15 XP + 5 Kristalle für neue Synthese
-          const newXP = profile.currentXP + 15;
+          const newXP = currentProfile.currentXP + 15;
           const levelInfo = calculateLevel(newXP);
           const updatedProfile: PlayerProfile = {
-            ...profile,
+            ...currentProfile,
             currentXP: newXP,
             level: levelInfo.level,
             xpToNextLevel: levelInfo.xpToNextLevel,
             sandboxSyntheses: nextFormulas,
             rewards: {
-              ...profile.rewards,
-              crystals: profile.rewards.crystals + 5
+              ...currentProfile.rewards,
+              crystals: currentProfile.rewards.crystals + 5
             }
           };
           savePlayerProfile(updatedProfile);

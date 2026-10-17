@@ -2,18 +2,9 @@ import { PlayerProfile, Badge, ElementCard } from '../types/game';
 import { Puzzle } from '../types/puzzles';
 import { getElementByNumber } from '../data/elements';
 import { LEARNING_MODULES, LearningModule } from '../types/modules';
-import { evaluateAvailableTitles, calculatePuzzleStars } from './rewardEngine';
+import { evaluateAvailableTitles, calculatePuzzleStars, calculateLevel, LEVEL_THRESHOLDS } from './rewardEngine';
 
-export const LEVEL_THRESHOLDS = [
-  0,     // Level 1 (Elementarlabor)
-  100,   // Level 2 (Atomkammer)
-  250,   // Level 3 (Molekülwerkstatt)
-  450,   // Level 4 (Reaktionsraum)
-  700,   // Level 5 (Kristallarchiv)
-  1000,  // Level 6 (Wasserstation)
-  1400,  // Level 7 (Umweltlabor)
-  1900   // Level 8 (Geheimes Forschungslabor)
-];
+export { calculateLevel, LEVEL_THRESHOLDS };
 
 export const AVAILABLE_BADGES: Badge[] = [
   {
@@ -95,50 +86,6 @@ export const AVAILABLE_BADGES: Badge[] = [
   }
 ];
 
-export function calculateLevel(totalXP: number): { level: number; currentXP: number; xpToNextLevel: number; progressPercent: number } {
-  const safeXP = Math.max(0, totalXP);
-  let level = 1;
-
-  for (let i = LEVEL_THRESHOLDS.length - 1; i >= 0; i--) {
-    if (safeXP >= LEVEL_THRESHOLDS[i]) {
-      level = i + 1;
-      break;
-    }
-  }
-
-  // Für XP oberhalb des vordefinierten Arrays: endlos skalierendes Levelsystem (500 XP pro Level)
-  const maxFixedLevel = LEVEL_THRESHOLDS.length;
-  const maxFixedXP = LEVEL_THRESHOLDS[maxFixedLevel - 1];
-  if (safeXP >= maxFixedXP) {
-    const extraXP = safeXP - maxFixedXP;
-    const extraLevels = Math.floor(extraXP / 500);
-    level = maxFixedLevel + extraLevels;
-    const currentBase = maxFixedXP + extraLevels * 500;
-    const nextBase = currentBase + 500;
-    const needed = nextBase - safeXP;
-    const progressPercent = Math.min(100, Math.round(((safeXP - currentBase) / 500) * 100));
-    return {
-      level,
-      currentXP: safeXP,
-      xpToNextLevel: Math.max(1, needed),
-      progressPercent
-    };
-  }
-
-  const currentLevelBase = LEVEL_THRESHOLDS[level - 1] || 0;
-  const nextLevelThreshold = LEVEL_THRESHOLDS[level] || currentLevelBase + 500;
-  const levelXP = safeXP - currentLevelBase;
-  const neededXP = nextLevelThreshold - currentLevelBase;
-  const progressPercent = Math.min(100, Math.round((levelXP / neededXP) * 100));
-
-  return {
-    level,
-    currentXP: safeXP,
-    xpToNextLevel: Math.max(0, nextLevelThreshold - safeXP),
-    progressPercent
-  };
-}
-
 export interface ModuleProgressItem {
   module: LearningModule;
   totalPuzzles: number;
@@ -204,69 +151,74 @@ export function evaluatePuzzleResult(
     starsEarned = calculatePuzzleStars(attemptsCount, hintsUsed);
     newProfile.puzzleStars[puzzle.id] = Math.max(newProfile.puzzleStars[puzzle.id] || 0, starsEarned);
 
-    // Tagesquests aktualisieren
-    if (newProfile.dailyQuests.length > 0) {
-      newProfile.dailyQuests = newProfile.dailyQuests.map(q => {
-        if (q.id.includes('quest_lab_')) {
-          const nextCount = Math.min(q.targetCount, q.currentCount + 1);
-          return { ...q, currentCount: nextCount, isCompleted: nextCount >= q.targetCount };
-        }
-        if (q.id.includes('quest_streak_')) {
-          const nextStreak = (newProfile.stats.currentStreak || 0) + 1;
-          const isDone = nextStreak >= q.targetCount;
-          return { ...q, currentCount: Math.min(q.targetCount, nextStreak), isCompleted: isDone };
-        }
-        if (q.id.includes('quest_pse_') && puzzle.type === 'periodic_table_quiz') {
-          const nextCount = Math.min(q.targetCount, q.currentCount + 1);
-          return { ...q, currentCount: nextCount, isCompleted: nextCount >= q.targetCount };
-        }
-        return q;
-      });
-    }
-    // Grund-XP aus dem Rätsel
-    xpEarned = puzzle.xpReward;
-    if (firstTry) {
-      xpEarned += 10; // Bonus für sofortiges Verstehen
-    }
-
-    // Kristalle berechnen
     const isFirstSolve = !profile.completedPuzzleIds.includes(puzzle.id);
-    crystalsEarned = 5;
-    if (isFirstSolve) crystalsEarned += 10;
-    if (firstTry) crystalsEarned += 5;
-
-    // War das Rätsel in der Spaced-Repetition-Wiederholung?
     const wasInReview = profile.failedPuzzlesToReview.includes(puzzle.id);
-    if (wasInReview) {
-      xpEarned += 15; // Wiederholungs-Meisterbonus!
-      crystalsEarned += 5;
-      // Badge: Wissens-Wiederbelebung
-      const b = AVAILABLE_BADGES.find(x => x.id === 'badge_review_master');
-      if (b && !newProfile.badges.some(x => x.id === b.id)) {
-        const unlocked = { ...b, unlockedAt: new Date().toISOString() };
-        newProfile.badges.push(unlocked);
-        newBadges.push(unlocked);
+    // Nur das erstmalige Lösen oder eine Meisterung im Wiederholungsmodus zählt.
+    // Reines Wiederholen bereits gelöster Rätsel darf keine XP/Kristalle mehr geben.
+    const isMeaningfulSolve = isFirstSolve || wasInReview;
+
+    if (isMeaningfulSolve) {
+      // Tagesquests aktualisieren
+      if (newProfile.dailyQuests.length > 0) {
+        newProfile.dailyQuests = newProfile.dailyQuests.map(q => {
+          if (q.id.includes('quest_lab_')) {
+            const nextCount = Math.min(q.targetCount, q.currentCount + 1);
+            return { ...q, currentCount: nextCount, isCompleted: nextCount >= q.targetCount };
+          }
+          if (q.id.includes('quest_streak_')) {
+            const nextStreak = (newProfile.stats.currentStreak || 0) + 1;
+            const isDone = nextStreak >= q.targetCount;
+            return { ...q, currentCount: Math.min(q.targetCount, nextStreak), isCompleted: isDone };
+          }
+          if (q.id.includes('quest_pse_') && puzzle.type === 'periodic_table_quiz') {
+            const nextCount = Math.min(q.targetCount, q.currentCount + 1);
+            return { ...q, currentCount: nextCount, isCompleted: nextCount >= q.targetCount };
+          }
+          return q;
+        });
       }
+
+      // Grund-XP aus dem Rätsel
+      xpEarned = puzzle.xpReward;
+      if (firstTry) xpEarned += 10; // Bonus für sofortiges Verstehen
+
+      // Kristalle: Basis + Erstlösungs-Prämie
+      crystalsEarned = 5;
+      if (isFirstSolve) crystalsEarned += 10;
+      if (firstTry) crystalsEarned += 5;
+
+      // Wiederholungs-Meisterbonus (nur wenn zuvor fehlgeschlagen und in der Queue)
+      if (wasInReview) {
+        xpEarned += 15;
+        crystalsEarned += 5;
+        // Badge: Wissens-Wiederbelebung
+        const b = AVAILABLE_BADGES.find(x => x.id === 'badge_review_master');
+        if (b && !newProfile.badges.some(x => x.id === b.id)) {
+          const unlocked = { ...b, unlockedAt: new Date().toISOString() };
+          newProfile.badges.push(unlocked);
+          newBadges.push(unlocked);
+        }
+      }
+
+      // Statistiken aktualisieren
+      newProfile.stats.correctAnswersTotal += 1;
+      newProfile.stats.puzzlesSolvedCount += 1;
+      newProfile.stats.currentStreak += 1;
+      if (newProfile.stats.currentStreak > newProfile.stats.bestStreak) {
+        newProfile.stats.bestStreak = newProfile.stats.currentStreak;
+      }
+
+      // Typ-Zähler inkrementieren
+      newProfile.stats.solvedByType[puzzle.type] = (newProfile.stats.solvedByType[puzzle.type] || 0) + 1;
     }
 
-    // Statistiken aktualisieren
-    newProfile.stats.correctAnswersTotal += 1;
-    newProfile.stats.puzzlesSolvedCount += 1;
-    newProfile.stats.currentStreak += 1;
-    if (newProfile.stats.currentStreak > newProfile.stats.bestStreak) {
-      newProfile.stats.bestStreak = newProfile.stats.currentStreak;
-    }
-
-    // Puzzle als erledigt markieren
+    // Puzzle als erledigt markieren (auch bei reinem Wiederholen)
     if (!newProfile.completedPuzzleIds.includes(puzzle.id)) {
       newProfile.completedPuzzleIds.push(puzzle.id);
     }
 
     // Aus der Wiederholungs-Queue entfernen
     newProfile.failedPuzzlesToReview = newProfile.failedPuzzlesToReview.filter(id => id !== puzzle.id);
-
-    // Typ-Zähler inkrementieren
-    newProfile.stats.solvedByType[puzzle.type] = (newProfile.stats.solvedByType[puzzle.type] || 0) + 1;
 
     // Elementkarte freischalten (falls für dieses Rätsel hinterlegt)
     if (puzzle.rewardElementAtomicNumber) {

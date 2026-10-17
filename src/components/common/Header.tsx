@@ -62,7 +62,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="font-mono font-bold tracking-wider text-sm sm:text-base text-white">
-                ELEMENTAR
+                CHEMISTRY MYSTERY
               </span>
               <span className="text-[11px] text-amber-300 font-mono font-bold">
                 by Tarek Zakaria

@@ -12,6 +12,10 @@ interface EquationBalancerProps {
 export const EquationBalancer: React.FC<EquationBalancerProps> = ({ puzzle, onValidate }) => {
   const rx = puzzle.reaction;
 
+  // Obergrenze der Koeffizientenregler. Muss groß genug sein, um jede (auch
+  // anspruchsvolle) Gleichung ausgleichen zu können – nicht künstlich bei 6 kappen.
+  const MAX_COEFFICIENT = 12;
+
   const [reactantCoeffs, setReactantCoeffs] = useState<number[]>(() =>
     rx.reactants.map(() => 1)
   );
@@ -24,7 +28,7 @@ export const EquationBalancer: React.FC<EquationBalancerProps> = ({ puzzle, onVa
     soundEngine.playClick();
     setReactantCoeffs(prev => {
       const next = [...prev];
-      next[index] = Math.max(1, Math.min(6, next[index] + delta));
+      next[index] = Math.max(1, Math.min(MAX_COEFFICIENT, next[index] + delta));
       return next;
     });
   };
@@ -33,7 +37,7 @@ export const EquationBalancer: React.FC<EquationBalancerProps> = ({ puzzle, onVa
     soundEngine.playClick();
     setProductCoeffs(prev => {
       const next = [...prev];
-      next[index] = Math.max(1, Math.min(6, next[index] + delta));
+      next[index] = Math.max(1, Math.min(MAX_COEFFICIENT, next[index] + delta));
       return next;
     });
   };
@@ -118,7 +122,7 @@ export const EquationBalancer: React.FC<EquationBalancerProps> = ({ puzzle, onVa
                   <button
                     type="button"
                     onClick={() => handleAdjustReactant(idx, 1)}
-                    disabled={reactantCoeffs[idx] >= 6}
+                    disabled={reactantCoeffs[idx] >= MAX_COEFFICIENT}
                     className="w-7 h-6 rounded bg-slate-900 hover:bg-slate-800 text-cyan-400 flex items-center justify-center disabled:opacity-30 cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5" />
@@ -156,7 +160,7 @@ export const EquationBalancer: React.FC<EquationBalancerProps> = ({ puzzle, onVa
                   <button
                     type="button"
                     onClick={() => handleAdjustProduct(idx, 1)}
-                    disabled={productCoeffs[idx] >= 6}
+                    disabled={productCoeffs[idx] >= MAX_COEFFICIENT}
                     className="w-7 h-6 rounded bg-slate-900 hover:bg-slate-800 text-emerald-400 flex items-center justify-center disabled:opacity-30 cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5" />

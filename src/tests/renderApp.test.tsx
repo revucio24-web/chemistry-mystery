@@ -20,7 +20,7 @@ describe('All Views Render Test', () => {
 
   it('renders App cleanly with renderToString', () => {
     const html = renderToString(<App />);
-    expect(html).toContain('ELEMENTAR');
+    expect(html).toContain('CHEMISTRY MYSTERY');
   });
 
   it('renders LabRoomOverview without errors', () => {

@@ -724,7 +724,7 @@ export const AtomVisualizer3D: React.FC<AtomVisualizer3DProps> = ({
       items.push({ kind: 'strongForceHalo', z: 0 });
 
       // 2. 3D-Quanten-Orbitallappen (wenn aktiv)
-      if (showLobes && modelMode === 'orbitals') {
+      if (showLobesRef.current && modelModeRef.current === 'orbitals') {
         orbitRings.forEach(ring => {
           if (ring.lType === 'p') {
             // p-Lappen entlang der Achse: Positive und negative Keule
@@ -803,15 +803,16 @@ export const AtomVisualizer3D: React.FC<AtomVisualizer3DProps> = ({
       });
 
       // 6. Quantensprung-Photon falls aktiv
-      if (quantumEvent && quantumEvent.active) {
-        const currentR = quantumEvent.fromRadius + (quantumEvent.toRadius - quantumEvent.fromRadius) * quantumEvent.progress;
+      const qe = quantumEventRef.current;
+      if (qe && qe.active) {
+        const currentR = qe.fromRadius + (qe.toRadius - qe.fromRadius) * qe.progress;
         const photonAngle = time * 0.06;
         const px3D = currentR * Math.cos(photonAngle);
         const py3D = currentR * Math.sin(photonAngle);
-        const pz3D = Math.sin(quantumEvent.progress * Math.PI * 4) * 22;
+        const pz3D = Math.sin(qe.progress * Math.PI * 4) * 22;
 
         const proj = project3D(px3D, py3D, pz3D);
-        items.push({ kind: 'photon', z: proj.pz, proj, progress: quantumEvent.progress });
+        items.push({ kind: 'photon', z: proj.pz, proj, progress: qe.progress });
       }
 
       // Sortiere von HINTEN (großes Z) nach VORNE (kleines Z)

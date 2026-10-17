@@ -1,5 +1,60 @@
 import { PlayerProfile, PlayerRewards, DailyQuest, LabTheme } from '../types/game';
 
+export const LEVEL_THRESHOLDS = [
+  0,     // Level 1 (Elementarlabor)
+  100,   // Level 2 (Atomkammer)
+  250,   // Level 3 (Molekülwerkstatt)
+  450,   // Level 4 (Reaktionsraum)
+  700,   // Level 5 (Kristallarchiv)
+  1000,  // Level 6 (Wasserstation)
+  1400,  // Level 7 (Umweltlabor)
+  1900   // Level 8 (Geheimes Forschungslabor)
+];
+
+export function calculateLevel(totalXP: number): { level: number; currentXP: number; xpToNextLevel: number; progressPercent: number } {
+  const safeXP = Math.max(0, totalXP);
+  let level = 1;
+
+  for (let i = LEVEL_THRESHOLDS.length - 1; i >= 0; i--) {
+    if (safeXP >= LEVEL_THRESHOLDS[i]) {
+      level = i + 1;
+      break;
+    }
+  }
+
+  // Für XP oberhalb des vordefinierten Arrays: endlos skalierendes Levelsystem (500 XP pro Level)
+  const maxFixedLevel = LEVEL_THRESHOLDS.length;
+  const maxFixedXP = LEVEL_THRESHOLDS[maxFixedLevel - 1];
+  if (safeXP >= maxFixedXP) {
+    const extraXP = safeXP - maxFixedXP;
+    const extraLevels = Math.floor(extraXP / 500);
+    level = maxFixedLevel + extraLevels;
+    const currentBase = maxFixedXP + extraLevels * 500;
+    const nextBase = currentBase + 500;
+    const needed = nextBase - safeXP;
+    const progressPercent = Math.min(100, Math.round(((safeXP - currentBase) / 500) * 100));
+    return {
+      level,
+      currentXP: safeXP,
+      xpToNextLevel: Math.max(1, needed),
+      progressPercent
+    };
+  }
+
+  const currentLevelBase = LEVEL_THRESHOLDS[level - 1] || 0;
+  const nextLevelThreshold = LEVEL_THRESHOLDS[level] || currentLevelBase + 500;
+  const levelXP = safeXP - currentLevelBase;
+  const neededXP = nextLevelThreshold - currentLevelBase;
+  const progressPercent = Math.min(100, Math.round((levelXP / neededXP) * 100));
+
+  return {
+    level,
+    currentXP: safeXP,
+    xpToNextLevel: Math.max(0, nextLevelThreshold - safeXP),
+    progressPercent
+  };
+}
+
 export interface TitleDefinition {
   id: string;
   name: string;
@@ -437,10 +492,13 @@ export function claimDailyQuestReward(
 
   const newCrystals = profile.rewards.crystals + quest.rewardCrystals;
   const newXP = profile.currentXP + quest.rewardXP;
+  const levelInfo = calculateLevel(newXP);
 
   const updatedProfile: PlayerProfile = {
     ...profile,
     currentXP: newXP,
+    level: levelInfo.level,
+    xpToNextLevel: levelInfo.xpToNextLevel,
     dailyQuests: updatedQuests,
     rewards: {
       ...profile.rewards,
