@@ -64,7 +64,7 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="font-mono font-bold tracking-wider text-xs sm:text-sm text-white whitespace-nowrap">
                 CHEMISTRY MYSTERY
               </span>
-              <span className="hidden lg:inline text-[11px] text-amber-300 font-mono font-bold whitespace-nowrap">
+              <span className="hidden 2xl:inline text-[11px] text-amber-300 font-mono font-bold whitespace-nowrap">
                 by Tarek Zakaria
               </span>
               <span className="hidden 2xl:inline-block text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800">
