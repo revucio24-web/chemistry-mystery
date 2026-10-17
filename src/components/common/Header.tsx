@@ -61,13 +61,13 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-mono font-bold tracking-wider text-sm sm:text-base text-white">
+              <span className="font-mono font-bold tracking-wider text-xs sm:text-sm text-white whitespace-nowrap">
                 CHEMISTRY MYSTERY
               </span>
-              <span className="text-[11px] text-amber-300 font-mono font-bold">
+              <span className="hidden lg:inline text-[11px] text-amber-300 font-mono font-bold whitespace-nowrap">
                 by Tarek Zakaria
               </span>
-              <span className="hidden xl:inline-block text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800">
+              <span className="hidden 2xl:inline-block text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800">
                 Chemie-Lernspiel
               </span>
             </div>
