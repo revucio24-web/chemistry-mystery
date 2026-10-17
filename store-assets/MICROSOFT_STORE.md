@@ -49,9 +49,12 @@ Was auf GitHub Pages geprüft werden musste: `base: './'` sorgt dafür, dass all
 
 | Feld | Wert | Woher |
 |---|---|---|
-| Package Identity Name | z. B. `AITarek.ChemistryMystery` | Partner Center → App-Identität |
-| Publisher Display Name | `AITarek` | dein Publisher-Name |
-| Publisher ID | `CN=...` | Partner Center → Package/Identity/Publisher |
+| Package Identity Name | `Tareksworld.Chemistry-Mystery` | Partner Center → Produktidentität |
+| Publisher Display Name | `Tareksworld` | Partner Center → Produktidentität |
+| Publisher ID | `CN=C66DC2A2-DC8A-4BA2-B165-6E231E76ECF2` | Partner Center → Produktidentität |
+| Version | `1.0.0.0` | frei wählbar, muss steigen |
+
+Eingetragene URL: `https://revucio24-web.github.io/chemistry-mystery/`
 
 4. Herunterladen: `.msixupload` + ein Ordner mit den Store-Grafiken.
 
