@@ -13,7 +13,7 @@ export default defineConfig({
     // Das Manifest liegt bewusst als statische Datei in public/manifest.webmanifest.
     VitePWA({
       registerType: 'autoUpdate',
-      injectRegister: 'auto',
+      injectRegister: false,
       manifest: false,
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],

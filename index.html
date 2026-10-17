@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="theme-color" content="#050811" />
-    <title>Elementar – Das große Chemie-Abenteuer</title>
+    <title>Chemistry Mystery – Das große Chemie-Abenteuer</title>
     
     <!-- PWA & Mobile Web App Meta -->
     <link rel="icon" type="image/svg+xml" href="/icon.svg" />
@@ -13,15 +13,22 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Elementar" />
-    <meta name="application-name" content="Elementar" />
+    <meta name="apple-mobile-web-app-title" content="Chemistry Mystery" />
+    <meta name="application-name" content="Chemistry Mystery" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="description" content="Elementar – Das große Chemie-Abenteuer: Entdecke die Geheimnisse der chemischen Elemente in einem futuristischen Wissenschaftslabor." />
+    <meta name="description" content="Chemistry Mystery – Das große Chemie-Abenteuer: Entdecke die Geheimnisse der chemischen Elemente in einem futuristischen Wissenschaftslabor." />
 
     <!-- Schriften sind lokal gebündelt (siehe src/main.tsx) - keine Google-Fonts-Aufrufe -->
   </head>
   <body class="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-x-hidden">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Service Worker sofort registrieren (nicht erst nach dem load-Event).
+      // Inline, damit Pruefwerkzeuge wie PWABuilder die Registrierung im HTML sehen.
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(function () {});
+      }
+    </script>
   </body>
 </html>
