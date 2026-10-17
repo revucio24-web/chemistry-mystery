@@ -13,7 +13,7 @@ Stand: 17.10.2026 · App: Chemistry Mystery (`de.aitarek.chemistrymystery`)
 | Icons in allen Store-Größen | ✅ `npm run build` erzeugt sie |
 | MSIX-Grafiken (44/50/150/300/310 px, Wide, Splash) | ✅ `store-assets/msix/` |
 | Produktions-Build | ✅ `dist/` (957 KiB vorgecacht, offlinefähig) |
-| Öffentliche HTTPS-URL | ❌ fehlt – blockiert alles Weitere |
+| Öffentliche HTTPS-URL | ✅ https://revucio24-web.github.io/chemistry-mystery/ |
 | Screenshots fürs Listing | ❌ fehlen |
 
 Icons neu erzeugen: `python scripts/make-store-icons.py`
@@ -21,21 +21,23 @@ Build neu erzeugen: `npm run build` (Achtung: braucht freien Zugriff auf Unterpr
 
 ---
 
-## 1. Hosting – der einzige echte Blocker
+## 1. Hosting – erledigt (GitHub Pages)
 
-PWABuilder baut das MSIX-Paket **in der Cloud** aus einer öffentlichen URL. Ohne URL kein Paket.
-Der Ordner `dist/` ist komplett statisch und braucht keinen Server.
+**Live:** https://revucio24-web.github.io/chemistry-mystery/
+**Repo:** https://github.com/revucio24-web/chemistry-mystery (öffentlich – bei GitHub Pages im Free-Plan Voraussetzung)
 
-**Option A – Netlify Drop (schnellste Variante, 2 Minuten)**
-1. `npm run build`
-2. https://app.netlify.com/drop öffnen
-3. Ordner `dist` ins Fenster ziehen
-4. URL notieren (z. B. `https://chemie-mystery.netlify.app`)
+Deployment läuft automatisch: `.github/workflows/deploy.yml` baut bei jedem Push auf `master` und veröffentlicht `dist/`.
+Prüfen, ob alles erreichbar ist:
 
-**Option B – Cloudflare Pages** (kostenlos, schnell, eigene Domain möglich)
-**Option C – GitHub Pages** (wenn das Projekt ohnehin in ein Repo soll)
+```bash
+node scripts/verify-pages.mjs
+```
 
-> ⚠️ Die URL wird **fest ins MSIX-Paket eingebaut** (Start-URL). Später wechseln heißt: neues Paket, neue Einreichung. Deshalb gleich eine stabile URL wählen – idealerweise später `https://aitarek.de/chemi/`.
+Ergebnis vom 17.10.2026: HTML, Manifest (`application/manifest+json`), Service Worker (9 Precache-Einträge) und beide Icons liefern HTTP 200.
+
+Was auf GitHub Pages geprüft werden musste: `base: './'` sorgt dafür, dass alle Pfade auch im Unterpfad `/chemistry-mystery/` funktionieren – inklusive Service-Worker-Scope. Deshalb ging es ohne Anpassung.
+
+> ⚠️ Die URL steckt **fest im MSIX-Paket** (Start-URL). Ein späterer Wechsel auf eine eigene Domain bedeutet: neues Paket, neue Einreichung. Wenn `aitarek.de` irgendwann läuft, ist ein Umzug über eine Custom Domain bei GitHub Pages möglich – aber eben mit neuer Paketversion.
 
 ---
 
